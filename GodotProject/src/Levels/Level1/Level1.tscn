@@ -6,7 +6,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Loop"
-length = 1.4
+length = 1.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -15,10 +15,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -33,7 +33,6 @@ extents = Vector2( 49, 3 )
 texture = ExtResource( 1 )
 centered = false
 hframes = 8
-frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
 autoplay = "Loop"
