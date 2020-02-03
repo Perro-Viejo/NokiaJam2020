@@ -1,28 +1,28 @@
 extends "res://src/Characters/Actor.gd"
 
 const STATES = {
-	RUNNING="Running",
-	PRETENDING_DEATH="PretendingDeath",
-	FALLING="Falling",
-	JUMPING="Jumping"
+	RUNNING = "Running",
+	ALERT = "Alert",
+	PLAY_POSSUM = "PlayPossum"
 }
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _ready() -> void:
+	# Conectar señales
+	EventsManager.connect("possum_alerted", self, "_on_possum_alerted")
+	
+	# Establecer estado por defecto de algunas mierdas
+	$Sprite/Alert.hide()
 
-func _physics_process(delta) -> void:
-	velocity.x = (Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) * 10
-	
-func _input(event: InputEvent):
-	
-	if is_on_floor() and event.is_action_pressed("jump"):
-		jump()
 
-func jump():
-	$StateMachine.transition_to(STATES.JUMPING, {})
-	
 func play_animation(code, previous_state = ""):
 	match code:
 		STATES.RUNNING:
 			$Sprite/AnimationPlayer.play("Running", -1, 5)
+		STATES.ALERT:
+			$Sprite/AnimationPlayer.play("Alert")
+		STATES.PLAY_POSSUM:
+			$Sprite/AnimationPlayer.play("PlayPossum", -1, 2.0)
+
+
+func _on_possum_alerted():
+	$StateMachine.transition_to(STATES.ALERT)

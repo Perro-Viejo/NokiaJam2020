@@ -1,27 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/Characters/Obstacle/Box/Box.png" type="Texture" id=1]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends \"res://src/Obstacles/SimpleObstacle.gd\"
-
-func _ready():
-	$CollisionShape2D.disabled = true
-	
-	velocity.y = 7
-		
-		
-func _physics_process(delta):
-	if $Sprite.frame == 3 and $CollisionShape2D.disabled:
-		$CollisionShape2D.disabled = false
-		
-	var bodies = $Detector.get_overlapping_bodies()
-	
-	for body in bodies:
-		print(body.name)
-		if not $CollisionShape2D.disabled and (body.name == \"Opossum\" || body.name == \"Bounds\"):
-			print(\"kaslfsajkjdsf\")
-			get_parent().remove_child(self)"
+[ext_resource path="res://src/Obstacles/Box/Box.gd" type="Script" id=1]
+[ext_resource path="res://assets/Characters/Obstacle/Box/Box.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Attacking"
@@ -47,12 +27,14 @@ extents = Vector2( 3, 3 )
 extents = Vector2( 5, 5 )
 
 [node name="Box" type="KinematicBody2D"]
-script = SubResource( 1 )
+script = ExtResource( 1 )
+visibility_depth = 1
+distance = Vector2( 2, 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+editor/display_folded = true
+texture = ExtResource( 2 )
 hframes = 5
-frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "Attacking"
@@ -62,6 +44,7 @@ anims/Attacking = SubResource( 2 )
 shape = SubResource( 3 )
 
 [node name="Detector" type="Area2D" parent="."]
+editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 shape = SubResource( 4 )

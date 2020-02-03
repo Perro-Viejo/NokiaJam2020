@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var velocity = Vector2.ZERO
 var max_velocity = Vector2(10, 20)
-var gravity = 10;
+var gravity = 0
 const FLOOR_NORMAL: = Vector2.UP
 
 func _physics_process(delta):
