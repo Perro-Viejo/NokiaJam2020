@@ -8,7 +8,7 @@
 [ext_resource path="res://src/Characters/Opossum/PlayPossum.gd" type="Script" id=6]
 [ext_resource path="res://src/Characters/Opossum/Alert.gd" type="Script" id=7]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Alert"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "PlayPossum"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -38,9 +38,8 @@ tracks/0/keys = {
 "values": [ 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Running"
-length = 4.0
+[sub_resource type="Animation" id=3]
+length = 2.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -49,13 +48,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 9, 6 )
 
 [node name="Opossum" type="KinematicBody2D"]
@@ -67,9 +66,9 @@ texture = ExtResource( 2 )
 hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/Alert = SubResource( 3 )
-anims/PlayPossum = SubResource( 4 )
-anims/Running = SubResource( 1 )
+anims/Alert = SubResource( 1 )
+anims/PlayPossum = SubResource( 2 )
+anims/Running = SubResource( 3 )
 
 [node name="Alert" type="Sprite" parent="Sprite"]
 position = Vector2( 1.5, -15 )
@@ -77,7 +76,7 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, 4 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )
