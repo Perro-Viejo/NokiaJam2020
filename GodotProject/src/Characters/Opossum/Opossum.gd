@@ -6,6 +6,7 @@ const STATES = {
 	PLAY_POSSUM = "PlayPossum"
 }
 
+var health;
 func _ready() -> void:
 	# Conectar señales
 	EventsManager.connect("possum_alerted", self, "_on_possum_alerted")
