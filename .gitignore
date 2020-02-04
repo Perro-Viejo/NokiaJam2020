@@ -1,0 +1,10 @@
+
+# Godot-specific ignores
+GodotProject/.import/
+GodotProject/export.cfg
+GodotProject/export_presets.cfg
+
+# Mono-specific ignores
+GodotProject/mono/
+
+.DS_Store
