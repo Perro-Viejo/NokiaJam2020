@@ -11,6 +11,8 @@ func _ready() -> void:
 	# Conectar señales
 	EventsManager.connect("possum_alerted", self, "_on_possum_alerted")
 	
+	print(">>> ", InputMap.get_action_list("asterisk"))
+	
 	# Establecer estado por defecto de algunas mierdas
 	$Sprite/Alert.hide()
 

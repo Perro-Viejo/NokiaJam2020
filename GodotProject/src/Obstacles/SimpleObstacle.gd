@@ -14,8 +14,9 @@ func _physics_process(delta):
 	if int(passed_time) == speed:
 		passed_time = 0.0
 		position += distance
-		done_steps += 1
-		
+
 		if visibility_depth >= 0 and done_steps == visibility_depth:
 			print("Esa gonorrea ya me puede ver")
 			EventsManager.emit_signal("possum_alerted")
+
+		done_steps += 1

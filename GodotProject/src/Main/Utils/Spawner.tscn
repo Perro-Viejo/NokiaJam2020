@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Spawner.gd" type="Script" id=1]
+[ext_resource path="res://src/Main/Utils/Spawner.gd" type="Script" id=1]
 [ext_resource path="res://src/Main/Utils/Timer/RandomTimer.gd" type="Script" id=2]
 
 [node name="Spawner" type="Position2D"]
