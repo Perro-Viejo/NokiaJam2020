@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Game.gd" type="Script" id=1]
 [ext_resource path="res://src/Levels/Level1/Level1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/GUI/GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Audio/AudioManager.gd" type="Script" id=4]
+[ext_resource path="res://assets/audio/SFX_PlayDead.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/SFX_Alert.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Audio/SequenceTool.gd" type="Script" id=7]
+[ext_resource path="res://assets/audio/SFX_Op_Walk_01.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/SFX_Op_Walk_02.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/SFX_Op_Walk_03.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/SFX_Op_Walk_04.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/SFX_GenEnemy_Walk_01.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/SFX_GenEnemy_Walk_02.ogg" type="AudioStream" id=13]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -10,3 +20,44 @@ script = ExtResource( 1 )
 [node name="Level" parent="." instance=ExtResource( 2 )]
 
 [node name="GUI" parent="." instance=ExtResource( 3 )]
+
+[node name="AudioManager" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Opossum" type="Node2D" parent="AudioManager"]
+editor/display_folded = true
+
+[node name="PlayPossum" type="AudioStreamPlayer" parent="AudioManager/Opossum"]
+stream = ExtResource( 5 )
+
+[node name="Alert" type="AudioStreamPlayer" parent="AudioManager/Opossum"]
+stream = ExtResource( 6 )
+
+[node name="Walk" type="Node2D" parent="AudioManager/Opossum"]
+editor/display_folded = true
+script = ExtResource( 7 )
+
+[node name="Walk_01" type="AudioStreamPlayer" parent="AudioManager/Opossum/Walk"]
+stream = ExtResource( 8 )
+
+[node name="Walk_02" type="AudioStreamPlayer" parent="AudioManager/Opossum/Walk"]
+stream = ExtResource( 9 )
+
+[node name="Walk_03" type="AudioStreamPlayer" parent="AudioManager/Opossum/Walk"]
+stream = ExtResource( 10 )
+
+[node name="Walk_04" type="AudioStreamPlayer" parent="AudioManager/Opossum/Walk"]
+stream = ExtResource( 11 )
+
+[node name="Enemies" type="Node2D" parent="AudioManager"]
+editor/display_folded = true
+
+[node name="Walk" type="Node2D" parent="AudioManager/Enemies"]
+editor/display_folded = true
+script = ExtResource( 7 )
+
+[node name="Walk_01" type="AudioStreamPlayer" parent="AudioManager/Enemies/Walk"]
+stream = ExtResource( 12 )
+
+[node name="Walk_02" type="AudioStreamPlayer" parent="AudioManager/Enemies/Walk"]
+stream = ExtResource( 13 )

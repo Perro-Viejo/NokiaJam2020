@@ -36,6 +36,10 @@ config/name="Nokia2020"
 run/main_scene="res://src/Game.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+mix_rate=48000
+
 [autoload]
 
 EventsManager="*res://src/Main/Managers/EventsManager.gd"
