@@ -60,4 +60,9 @@ shape = SubResource( 3 )
 [node name="Spawners" type="Node" parent="."]
 
 [node name="Spawner" parent="Spawners" instance=ExtResource( 4 )]
-position = Vector2( 46, 17 )
+position = Vector2( 46, 16 )
+side = 2
+
+[node name="Spawner2" parent="Spawners" instance=ExtResource( 4 )]
+position = Vector2( 38, 16 )
+side = -2
