@@ -28,6 +28,7 @@ extents = Vector2( 5, 5 )
 
 [node name="Wolf" type="KinematicBody2D"]
 script = ExtResource( 1 )
+visibility_depth = 2
 y_distance = 4
 
 [node name="Sprite" type="Sprite" parent="."]
