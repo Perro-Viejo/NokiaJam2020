@@ -39,7 +39,7 @@ func play_walk():
 	if frame >= frames_cfg.walk.frames.size(): return
 	
 	$Sprite.set_frame(frames_cfg.walk.frames[frame])
-	# NOTA: Aquí se puede poner a sonar un SFX si se quiere
+	EventsManager.emit_signal("play_requested", get_name(), "Walk")
 	
 	step += 1
 	if step > frames_cfg.walk.steps_by_frame[frame]:

@@ -14,8 +14,6 @@
 [ext_resource path="res://assets/audio/SFX_GenEnemy_Walk_01.ogg" type="AudioStream" id=12]
 [ext_resource path="res://assets/audio/SFX_GenEnemy_Walk_02.ogg" type="AudioStream" id=13]
 
-
-
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -49,13 +47,13 @@ stream = ExtResource( 10 )
 [node name="Walk_04" type="AudioStreamPlayer" parent="AudioManager/Opossum/Walk"]
 stream = ExtResource( 11 )
 
-[node name="Enemies" type="Node2D" parent="AudioManager"]
+[node name="Wolf" type="Node2D" parent="AudioManager"]
 
-[node name="Walk" type="Node2D" parent="AudioManager/Enemies"]
+[node name="Walk" type="Node2D" parent="AudioManager/Wolf"]
 script = ExtResource( 7 )
 
-[node name="Walk_01" type="AudioStreamPlayer" parent="AudioManager/Enemies/Walk"]
+[node name="Walk_01" type="AudioStreamPlayer" parent="AudioManager/Wolf/Walk"]
 stream = ExtResource( 12 )
 
-[node name="Walk_02" type="AudioStreamPlayer" parent="AudioManager/Enemies/Walk"]
+[node name="Walk_02" type="AudioStreamPlayer" parent="AudioManager/Wolf/Walk"]
 stream = ExtResource( 13 )
