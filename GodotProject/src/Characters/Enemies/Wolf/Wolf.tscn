@@ -1,12 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Characters/Enemies/Wolf/Wolf.gd" type="Script" id=1]
 [ext_resource path="res://assets/Characters/Enemies/Wolf/wolf.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3, 3 )
+[sub_resource type="Animation" id=1]
+resource_name = "Smell"
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 9, 10 ]
+}
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3, 3 )
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 6, 1 )
 
 [node name="Wolf" type="KinematicBody2D"]
@@ -14,18 +32,22 @@ script = ExtResource( 1 )
 visibility_depth = 6
 y_distance = 2
 collision_steps = 8
+smell_time = 5
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -12 )
 texture = ExtResource( 2 )
 hframes = 11
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/Smell = SubResource( 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -6 )
-shape = SubResource( 1 )
+position = Vector2( 0, -12 )
+shape = SubResource( 2 )
 
 [node name="Detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 position = Vector2( 0, -1 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )

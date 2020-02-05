@@ -26,7 +26,7 @@ tracks/0/keys = {
 extents = Vector2( 5, 27 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 49, 3 )
+extents = Vector2( 49, 10 )
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 1 )
@@ -54,7 +54,7 @@ position = Vector2( 89, 27 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 43, 63 )
+position = Vector2( 43, 66 )
 shape = SubResource( 3 )
 
 [node name="Spawners" type="Node" parent="."]

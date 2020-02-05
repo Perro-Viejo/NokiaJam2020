@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Characters/Opossum/Opossum.gd" type="Script" id=1]
 [ext_resource path="res://assets/Characters/Opossum/opossum.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/Characters/Opossum/Running.gd" type="Script" id=5]
 [ext_resource path="res://src/Characters/Opossum/PlayPossum.gd" type="Script" id=6]
 [ext_resource path="res://src/Characters/Opossum/Alert.gd" type="Script" id=7]
+[ext_resource path="res://src/Characters/Opossum/Continue.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Alert"
@@ -107,3 +108,6 @@ script = ExtResource( 6 )
 
 [node name="Alert" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
+
+[node name="Continue" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )

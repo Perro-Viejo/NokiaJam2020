@@ -7,7 +7,7 @@ var frames_cfg: Dictionary = {
 	},
 	"walk": {
 		"frames": [2, 3, 4, 5, 6],
-		"steps_by_frame": [1, 3, 2, 2, 20]
+		"steps_by_frame": [1, 1, 2, 2, 14]
 	}
 }
 var current_frame: int = 0
@@ -45,3 +45,22 @@ func play_walk():
 	if step > frames_cfg.walk.steps_by_frame[frame]:
 		frame += 1
 		step = 0
+
+
+func play_smell():
+	print('Cuántas veces')
+	smelling = true
+	$Detector/CollisionShape2D.disabled = true
+	$Sprite/AnimationPlayer.play('Smell')
+	EventsManager.emit_signal('enemy_approached', smell_time)
+
+
+func _on_possum_done():
+	smelling = false
+	leaving = true
+	set_z_index(4)
+	distance.y *= 4
+	$CollisionShape2D.disabled = true
+	$Detector/CollisionShape2D.disabled = false
+	$Sprite/AnimationPlayer.stop(true)
+	$Sprite.set_frame(frames_cfg.walk.frames.back())
