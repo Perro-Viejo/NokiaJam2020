@@ -3,16 +3,18 @@
 [ext_resource path="res://src/Game.gd" type="Script" id=1]
 [ext_resource path="res://src/Levels/Level1/Level1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/GUI/GUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Audio/AudioManager.gd" type="Script" id=4]
+[ext_resource path="res://src/Main/Managers/AudioManager.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/SFX_PlayDead.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/audio/SFX_Alert.ogg" type="AudioStream" id=6]
-[ext_resource path="res://Audio/SequenceTool.gd" type="Script" id=7]
+[ext_resource path="res://src/Main/Audio/SequenceTool.gd" type="Script" id=7]
 [ext_resource path="res://assets/audio/SFX_Op_Walk_01.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/audio/SFX_Op_Walk_02.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/audio/SFX_Op_Walk_03.ogg" type="AudioStream" id=10]
 [ext_resource path="res://assets/audio/SFX_Op_Walk_04.ogg" type="AudioStream" id=11]
 [ext_resource path="res://assets/audio/SFX_GenEnemy_Walk_01.ogg" type="AudioStream" id=12]
 [ext_resource path="res://assets/audio/SFX_GenEnemy_Walk_02.ogg" type="AudioStream" id=13]
+
+
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )

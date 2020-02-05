@@ -3,10 +3,10 @@
 [ext_resource path="res://src/Characters/Enemies/Wolf/Wolf.gd" type="Script" id=1]
 [ext_resource path="res://assets/Characters/Enemies/Wolf/wolf.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 3 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6, 1 )
 
 [node name="Wolf" type="KinematicBody2D"]
@@ -22,10 +22,10 @@ hframes = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -6 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="Detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 position = Vector2( 0, -1 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
