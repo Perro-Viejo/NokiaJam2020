@@ -25,7 +25,6 @@ script = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="Opossum" type="Node2D" parent="AudioManager"]
-editor/display_folded = true
 
 [node name="PlayPossum" type="AudioStreamPlayer" parent="AudioManager/Opossum"]
 stream = ExtResource( 5 )
@@ -34,7 +33,6 @@ stream = ExtResource( 5 )
 stream = ExtResource( 6 )
 
 [node name="Walk" type="Node2D" parent="AudioManager/Opossum"]
-editor/display_folded = true
 script = ExtResource( 7 )
 
 [node name="Walk_01" type="AudioStreamPlayer" parent="AudioManager/Opossum/Walk"]
@@ -50,10 +48,8 @@ stream = ExtResource( 10 )
 stream = ExtResource( 11 )
 
 [node name="Enemies" type="Node2D" parent="AudioManager"]
-editor/display_folded = true
 
 [node name="Walk" type="Node2D" parent="AudioManager/Enemies"]
-editor/display_folded = true
 script = ExtResource( 7 )
 
 [node name="Walk_01" type="AudioStreamPlayer" parent="AudioManager/Enemies/Walk"]
