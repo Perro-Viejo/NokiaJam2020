@@ -7,7 +7,6 @@
 resource_name = "Smell"
 length = 2.0
 loop = true
-step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -19,6 +18,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 7, 8, 9, 10 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "smell_SFX"
+}, {
+"args": [  ],
+"method": "smell_SFX"
+} ]
 }
 
 [sub_resource type="RectangleShape2D" id=2]

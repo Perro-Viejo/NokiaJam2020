@@ -54,6 +54,9 @@ func play_smell():
 	$Sprite/AnimationPlayer.play('Smell')
 	EventsManager.emit_signal('enemy_approached', smell_time)
 
+func smell_SFX():
+	EventsManager.emit_signal("play_requested", get_name(), "Smell")
+
 
 func _on_possum_done():
 	smelling = false

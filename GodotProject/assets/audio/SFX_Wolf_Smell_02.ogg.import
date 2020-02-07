@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_Wolf_Smell_02.ogg-a7588a75bad1693579b4223342992ea1.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/SFX_Wolf_Smell_02.ogg"
+dest_files=[ "res://.import/SFX_Wolf_Smell_02.ogg-a7588a75bad1693579b4223342992ea1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

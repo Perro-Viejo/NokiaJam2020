@@ -20,12 +20,14 @@ func _input(event: InputEvent):
 			if event.get_action_strength(number_to_press) > 0:
 				is_good=true
 				$InfoText.show_good_message()
+				EventsManager.emit_signal("play_requested", "UI", "Pos_Fbk")
 				should_press_number = false
 			else:
 				is_good=false
 				should_press_number = false
 				$InfoText.show_bad_message()
 				EventsManager.emit_signal("possum_discovered")
+				EventsManager.emit_signal("play_requested", "UI", "Neg_Fbk")
 			
 func _on_Timer_timeout():
 	if not is_good:
