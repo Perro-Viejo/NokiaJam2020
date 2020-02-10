@@ -28,8 +28,8 @@ func play_animation(code, previous_state = ""):
 			EventsManager.emit_signal("play_requested" , get_name(), "PlayPossum")
 		STATES.CONTINUE:
 			$Sprite/AnimationPlayer.play("PlayPossum", -1, -3.0, true)
-			EventsManager.emit_signal("play_requested" , get_name(), "Wake")
 			yield($Sprite/AnimationPlayer, 'animation_finished')
+			EventsManager.emit_signal("play_requested" , get_name(), "Wake")
 			$StateMachine.transition_to(STATES.RUNNING)
 
 
