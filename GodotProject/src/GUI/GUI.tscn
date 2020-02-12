@@ -5,26 +5,26 @@
 [ext_resource path="res://assets/GUI/left_panel.png" type="Texture" id=3]
 [ext_resource path="res://assets/GUI/over.png" type="Texture" id=4]
 [ext_resource path="res://assets/GUI/progress.png" type="Texture" id=5]
-[ext_resource path="res://assets/GUI/right_panel.png" type="Texture" id=6]
-[ext_resource path="res://assets/GUI/number_bg.png" type="Texture" id=7]
-[ext_resource path="res://assets/Fonts/HungryPro.otf" type="DynamicFontData" id=8]
-[ext_resource path="res://src/GUI/NumberToPress.gd" type="Script" id=9]
-[ext_resource path="res://src/GUI/InfoText.gd" type="Script" id=10]
-[ext_resource path="res://src/GUI/SmellBar.gd" type="Script" id=11]
+[ext_resource path="res://src/GUI/SmellBar.gd" type="Script" id=6]
+[ext_resource path="res://assets/GUI/right_panel.png" type="Texture" id=7]
+[ext_resource path="res://assets/GUI/number_bg.png" type="Texture" id=8]
+[ext_resource path="res://assets/Fonts/HungryPro.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://src/GUI/NumberToPress.gd" type="Script" id=10]
+[ext_resource path="res://src/GUI/InfoText.gd" type="Script" id=11]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 15, 48 )
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 15, 48 )
 
 [sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 8 )
+font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 8 )
+font_data = ExtResource( 9 )
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -63,7 +63,7 @@ fill_mode = 3
 nine_patch_stretch = true
 stretch_margin_left = 10
 stretch_margin_top = 26
-script = ExtResource( 11 )
+script = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="Control/LeftPanel/CenterContainer/SmellBar"]
 
@@ -82,32 +82,30 @@ margin_right = 14.0
 margin_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="NumberToPress" type="Label" parent="."]
-visible = false
-margin_left = 74.4527
-margin_top = 17.224
-margin_right = 81.4527
-margin_bottom = 32.224
+margin_left = 74.1385
+margin_top = 17.4849
+margin_right = 81.1385
+margin_bottom = 32.4849
 rect_pivot_offset = Vector2( 3.73515, 7.68207 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="Timer" type="Timer" parent="NumberToPress"]
 wait_time = 1.29
 
 [node name="InfoText" type="Label" parent="NumberToPress"]
-visible = false
-margin_left = -47.0
-margin_top = -20.0
-margin_right = -12.0
-margin_bottom = -5.0
+margin_left = -47.1385
+margin_top = -18.8224
+margin_right = -12.1385
+margin_bottom = -3.8224
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 text = "good!"
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="Timer" type="Timer" parent="NumberToPress/InfoText"]
 wait_time = 0.5

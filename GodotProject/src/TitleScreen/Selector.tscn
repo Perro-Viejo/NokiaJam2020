@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Fonts/HungryPro.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[node name="Selector" type="Label"]
+margin_left = -1.85038
+margin_top = -8.11319
+margin_right = 5.14962
+margin_bottom = 6.88681
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+text = ">"
+align = 1
+valign = 1

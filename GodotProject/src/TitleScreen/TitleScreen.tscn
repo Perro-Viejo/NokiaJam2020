@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/TitleScreen/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://assets/Fonts/HungryPro.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/TitleScreen/PlayButtonLabel.gd" type="Script" id=3]
+[ext_resource path="res://src/TitleScreen/CreditsButtonLabel.gd" type="Script" id=4]
+[ext_resource path="res://src/TitleScreen/ExitButtonLabel.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="PlayButtonLabel" type="Label" parent="."]
+margin_left = 28.2135
+margin_top = 1.72956
+margin_right = 56.2135
+margin_bottom = 16.7296
+rect_pivot_offset = Vector2( 20.2191, 12.5108 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+text = "PLAY"
+align = 1
+valign = 1
+script = ExtResource( 3 )
+
+[node name="position" type="Position2D" parent="PlayButtonLabel"]
+position = Vector2( -7, 0 )
+
+[node name="CreditsButtonLabel" type="Label" parent="."]
+margin_left = 19.1056
+margin_top = 16.9232
+margin_right = 68.1056
+margin_bottom = 31.9232
+rect_pivot_offset = Vector2( 20.2191, 12.5108 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+text = "CREDITS"
+align = 1
+valign = 1
+script = ExtResource( 4 )
+
+[node name="position" type="Position2D" parent="CreditsButtonLabel"]
+position = Vector2( -7, 0 )
+
+[node name="ExitButtonLabel" type="Label" parent="."]
+margin_left = 28.8689
+margin_top = 32.7764
+margin_right = 56.8689
+margin_bottom = 47.7764
+rect_pivot_offset = Vector2( 20.2191, 12.5108 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+text = "EXIT"
+align = 1
+valign = 1
+script = ExtResource( 5 )
+
+[node name="position" type="Position2D" parent="ExitButtonLabel"]
+position = Vector2( -7, 0 )

@@ -1,85 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Game.gd" type="Script" id=1]
-[ext_resource path="res://src/Levels/Level1/Level1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/GUI/GUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Main/Managers/AudioManager.gd" type="Script" id=4]
-[ext_resource path="res://assets/audio/SFX_PlayDead.ogg" type="AudioStream" id=5]
-[ext_resource path="res://assets/audio/SFX_Alert.ogg" type="AudioStream" id=6]
-[ext_resource path="res://src/Main/Audio/SequenceTool.gd" type="Script" id=7]
-[ext_resource path="res://assets/audio/SFX_Op_Walk_01.ogg" type="AudioStream" id=8]
-[ext_resource path="res://assets/audio/SFX_Op_Walk_02.ogg" type="AudioStream" id=9]
-[ext_resource path="res://assets/audio/SFX_Op_Walk_03.ogg" type="AudioStream" id=10]
-[ext_resource path="res://assets/audio/SFX_Op_Walk_04.ogg" type="AudioStream" id=11]
-[ext_resource path="res://assets/audio/SFX_GenEnemy_Walk_01.ogg" type="AudioStream" id=12]
-[ext_resource path="res://assets/audio/SFX_GenEnemy_Walk_02.ogg" type="AudioStream" id=13]
-[ext_resource path="res://assets/audio/SFX_Wolf_Smell_02.ogg" type="AudioStream" id=14]
-[ext_resource path="res://assets/audio/SFX_Wolf_Smell_01.ogg" type="AudioStream" id=15]
-[ext_resource path="res://assets/audio/SFX_Wake.ogg" type="AudioStream" id=16]
-[ext_resource path="res://assets/audio/UI_Neg_Feed.ogg" type="AudioStream" id=17]
-[ext_resource path="res://assets/audio/UI_Pos_Feed.ogg" type="AudioStream" id=18]
-[ext_resource path="res://src/Main/Audio/RandomTool.gd" type="Script" id=19]
+[ext_resource path="res://src/TitleScreen/TitleScreen.tscn" type="PackedScene" id=2]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Level" parent="." instance=ExtResource( 2 )]
-
-[node name="GUI" parent="." instance=ExtResource( 3 )]
-
-[node name="AudioManager" type="Node2D" parent="."]
-script = ExtResource( 4 )
-
-[node name="Opossum" type="Node2D" parent="AudioManager"]
-
-[node name="PlayPossum" type="AudioStreamPlayer" parent="AudioManager/Opossum"]
-stream = ExtResource( 5 )
-
-[node name="Wake" type="AudioStreamPlayer" parent="AudioManager/Opossum"]
-stream = ExtResource( 16 )
-
-[node name="Alert" type="AudioStreamPlayer" parent="AudioManager/Opossum"]
-stream = ExtResource( 6 )
-
-[node name="Walk" type="Node2D" parent="AudioManager/Opossum"]
-script = ExtResource( 7 )
-
-[node name="Walk_01" type="AudioStreamPlayer" parent="AudioManager/Opossum/Walk"]
-stream = ExtResource( 8 )
-
-[node name="Walk_02" type="AudioStreamPlayer" parent="AudioManager/Opossum/Walk"]
-stream = ExtResource( 9 )
-
-[node name="Walk_03" type="AudioStreamPlayer" parent="AudioManager/Opossum/Walk"]
-stream = ExtResource( 10 )
-
-[node name="Walk_04" type="AudioStreamPlayer" parent="AudioManager/Opossum/Walk"]
-stream = ExtResource( 11 )
-
-[node name="Wolf" type="Node2D" parent="AudioManager"]
-
-[node name="Walk" type="Node2D" parent="AudioManager/Wolf"]
-script = ExtResource( 7 )
-
-[node name="Walk_01" type="AudioStreamPlayer" parent="AudioManager/Wolf/Walk"]
-stream = ExtResource( 12 )
-
-[node name="Walk_02" type="AudioStreamPlayer" parent="AudioManager/Wolf/Walk"]
-stream = ExtResource( 13 )
-
-[node name="Smell" type="Node2D" parent="AudioManager/Wolf"]
-script = ExtResource( 19 )
-
-[node name="Smell_01" type="AudioStreamPlayer" parent="AudioManager/Wolf/Smell"]
-stream = ExtResource( 15 )
-
-[node name="Smell_02" type="AudioStreamPlayer" parent="AudioManager/Wolf/Smell"]
-stream = ExtResource( 14 )
-
-[node name="UI" type="Node2D" parent="AudioManager"]
-
-[node name="Pos_Fbk" type="AudioStreamPlayer" parent="AudioManager/UI"]
-stream = ExtResource( 18 )
-
-[node name="Neg_Fbk" type="AudioStreamPlayer" parent="AudioManager/UI"]
-stream = ExtResource( 17 )
+[node name="TitleScreen" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -2.23517e-08 )
