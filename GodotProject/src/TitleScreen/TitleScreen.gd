@@ -27,16 +27,16 @@ func _input(event):
 		button.remove_child(selector)
 		
 		if event.scancode == KEY_DOWN:
-		    index += 1
-		    if index >= buttons.size():
-			    index = buttons.size()-1
+			index += 1
+			if index >= buttons.size():
+				index = buttons.size()-1
 				
 			
 		if event.scancode == KEY_UP:
 			index -= 1
 			
 			if index < 0:
-			    index = 0
+				index = 0
 		
 		if event.scancode == KEY_ENTER:
 			get_node(buttons[self.index]).excecute_command()
