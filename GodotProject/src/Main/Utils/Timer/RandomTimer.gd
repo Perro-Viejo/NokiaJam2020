@@ -12,5 +12,4 @@ func _ready():
 	
 func init_rand():
 	var wait_time = rand_range(min_time, max_time)
-	print(wait_time)
 	set_wait_time(wait_time)

@@ -27,8 +27,7 @@ func _physics_process(delta):
 	if passed_time >= 1 / speed:
 		passed_time = 0.0
 		done_steps += 1
-		print("%s hizo ya %d pasos" % [ get_name(), done_steps ])
-
+		
 		if visibility_depth >= 0 and done_steps == visibility_depth:
 			EventsManager.emit_signal("possum_alerted")
 			distance.y += 2

@@ -9,8 +9,8 @@
 [ext_resource path="res://assets/GUI/right_panel.png" type="Texture" id=7]
 [ext_resource path="res://assets/GUI/number_bg.png" type="Texture" id=8]
 [ext_resource path="res://assets/Fonts/HungryPro.otf" type="DynamicFontData" id=9]
-[ext_resource path="res://src/GUI/NumberToPress.gd" type="Script" id=10]
-[ext_resource path="res://src/GUI/InfoText.gd" type="Script" id=11]
+[ext_resource path="res://src/GUI/InfoText.gd" type="Script" id=10]
+[ext_resource path="res://src/GUI/NumberToPress.gd" type="Script" id=11]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -34,7 +34,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Vignette" type="TextureRect" parent="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
@@ -75,7 +74,6 @@ margin_left = -15.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="Number" type="TextureRect" parent="Control/RightPanel"]
-visible = false
 margin_left = 4.0
 margin_top = 21.0
 margin_right = 14.0
@@ -84,30 +82,42 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource( 8 )
 
-[node name="NumberToPress" type="Label" parent="."]
-margin_left = 74.1385
-margin_top = 17.4849
-margin_right = 81.1385
-margin_bottom = 32.4849
-rect_pivot_offset = Vector2( 3.73515, 7.68207 )
+[node name="InfoText" type="Label" parent="."]
+margin_left = 26.3211
+margin_top = -1.17127
+margin_right = 61.3211
+margin_bottom = 13.8287
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+text = "good!"
 script = ExtResource( 10 )
+
+[node name="Timer" type="Timer" parent="InfoText"]
+wait_time = 0.5
+
+[node name="NumberToPress" type="Label" parent="."]
+margin_left = 73.2771
+margin_top = 50.2217
+margin_right = 80.2771
+margin_bottom = 65.2217
+rect_pivot_offset = Vector2( 3.73515, 7.68207 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+script = ExtResource( 11 )
 
 [node name="Timer" type="Timer" parent="NumberToPress"]
 wait_time = 1.29
 
-[node name="InfoText" type="Label" parent="NumberToPress"]
-margin_left = -47.1385
-margin_top = -18.8224
-margin_right = -12.1385
-margin_bottom = -3.8224
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
-text = "good!"
-script = ExtResource( 11 )
+[node name="InitialPosition" type="Position2D" parent="NumberToPress"]
+position = Vector2( 0.13855, 0.374058 )
 
-[node name="Timer" type="Timer" parent="NumberToPress/InfoText"]
-wait_time = 0.5
+[node name="MiddlePosition" type="Position2D" parent="NumberToPress"]
+position = Vector2( -0.207809, -28.4701 )
+
+[node name="FinalPosition" type="Position2D" parent="NumberToPress"]
+position = Vector2( -0.761978, -61.7198 )
+
+[node name="Tween" type="Tween" parent="NumberToPress"]
+[connection signal="timeout" from="InfoText/Timer" to="InfoText" method="_on_Timer_timeout"]
 [connection signal="timeout" from="NumberToPress/Timer" to="NumberToPress" method="_on_Timer_timeout"]
-[connection signal="timeout" from="NumberToPress/InfoText/Timer" to="NumberToPress/InfoText" method="_on_Timer_timeout"]
+[connection signal="tween_all_completed" from="NumberToPress/Tween" to="NumberToPress" method="_on_Tween_tween_all_completed"]
