@@ -8,9 +8,9 @@
 [ext_resource path="res://src/GUI/SmellBar.gd" type="Script" id=6]
 [ext_resource path="res://assets/GUI/right_panel.png" type="Texture" id=7]
 [ext_resource path="res://assets/GUI/number_bg.png" type="Texture" id=8]
-[ext_resource path="res://assets/Fonts/HungryPro.otf" type="DynamicFontData" id=9]
-[ext_resource path="res://src/GUI/InfoText.gd" type="Script" id=10]
-[ext_resource path="res://src/GUI/NumberToPress.gd" type="Script" id=11]
+[ext_resource path="res://src/GUI/Number.gd" type="Script" id=9]
+[ext_resource path="res://assets/Fonts/HungryPro.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://src/GUI/InfoText.gd" type="Script" id=11]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -20,11 +20,11 @@ region_rect = Rect2( 0, 0, 15, 48 )
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 15, 48 )
 
-[sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 9 )
-
 [sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 10 )
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -34,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Vignette" type="TextureRect" parent="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
@@ -70,19 +71,49 @@ script = ExtResource( 6 )
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -15.0
+margin_left = -14.0
+margin_right = 1.0
 custom_styles/panel = SubResource( 2 )
 
+[node name="InitialPosition" type="Position2D" parent="Control/RightPanel"]
+position = Vector2( 2.00884, 50.3595 )
+
+[node name="MiddlePosition" type="Position2D" parent="Control/RightPanel"]
+position = Vector2( 2.38541, 19.7922 )
+
+[node name="FinalPosition" type="Position2D" parent="Control/RightPanel"]
+position = Vector2( 1.83123, -11.7317 )
+
 [node name="Number" type="TextureRect" parent="Control/RightPanel"]
-margin_left = 4.0
-margin_top = 21.0
-margin_right = 14.0
-margin_bottom = 30.0
+margin_left = 2.86147
+margin_top = 20.1054
+margin_right = 14.8615
+margin_bottom = 30.1054
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource( 8 )
+stretch_mode = 1
+script = ExtResource( 9 )
 
-[node name="InfoText" type="Label" parent="."]
+[node name="Tween" type="Tween" parent="Control/RightPanel/Number"]
+
+[node name="NumberToPress" type="Label" parent="Control/RightPanel/Number"]
+margin_left = 2.80103
+margin_top = -3.3073
+margin_right = 10.801
+margin_bottom = 11.6927
+rect_pivot_offset = Vector2( 3.73515, 7.68207 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+text = "2"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="Control/RightPanel/Number"]
+wait_time = 1.29
+
+[node name="InfoText" type="Label" parent="Control"]
+visible = false
 margin_left = 26.3211
 margin_top = -1.17127
 margin_right = 61.3211
@@ -90,34 +121,10 @@ margin_bottom = 13.8287
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 text = "good!"
-script = ExtResource( 10 )
-
-[node name="Timer" type="Timer" parent="InfoText"]
-wait_time = 0.5
-
-[node name="NumberToPress" type="Label" parent="."]
-margin_left = 73.2771
-margin_top = 50.2217
-margin_right = 80.2771
-margin_bottom = 65.2217
-rect_pivot_offset = Vector2( 3.73515, 7.68207 )
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 script = ExtResource( 11 )
 
-[node name="Timer" type="Timer" parent="NumberToPress"]
-wait_time = 1.29
-
-[node name="InitialPosition" type="Position2D" parent="NumberToPress"]
-position = Vector2( 0.13855, 0.374058 )
-
-[node name="MiddlePosition" type="Position2D" parent="NumberToPress"]
-position = Vector2( -0.207809, -28.4701 )
-
-[node name="FinalPosition" type="Position2D" parent="NumberToPress"]
-position = Vector2( -0.761978, -61.7198 )
-
-[node name="Tween" type="Tween" parent="NumberToPress"]
-[connection signal="timeout" from="InfoText/Timer" to="InfoText" method="_on_Timer_timeout"]
-[connection signal="timeout" from="NumberToPress/Timer" to="NumberToPress" method="_on_Timer_timeout"]
-[connection signal="tween_all_completed" from="NumberToPress/Tween" to="NumberToPress" method="_on_Tween_tween_all_completed"]
+[node name="Timer" type="Timer" parent="Control/InfoText"]
+wait_time = 0.5
+[connection signal="tween_completed" from="Control/RightPanel/Number/Tween" to="Control/RightPanel/Number" method="_on_Tween_tween_completed"]
+[connection signal="timeout" from="Control/RightPanel/Number/Timer" to="Control/RightPanel/Number/NumberToPress" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Control/InfoText/Timer" to="Control/InfoText" method="_on_Timer_timeout"]
