@@ -27,18 +27,21 @@ func _input(event):
 		button.remove_child(selector)
 		
 		if event.scancode == KEY_DOWN:
+			EventsManager.emit_signal("play_requested" , "UI", "Cursor")
 			index += 1
 			if index >= buttons.size():
 				index = buttons.size()-1
 				
 			
 		if event.scancode == KEY_UP:
+			EventsManager.emit_signal("play_requested" , "UI", "Cursor")
 			index -= 1
 			
 			if index < 0:
 				index = 0
 		
 		if event.scancode == KEY_ENTER:
+			EventsManager.emit_signal("play_requested" , "UI", "Select")
 			get_node(buttons[self.index]).excecute_command()
 		
 		update_selector()

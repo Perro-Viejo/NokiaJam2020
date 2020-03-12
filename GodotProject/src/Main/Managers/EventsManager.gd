@@ -5,6 +5,7 @@ extends Node
 signal possum_alerted
 signal possum_pretended
 signal possum_discovered
+signal possum_awake
 signal enemy_approached(smell_time)
 signal possum_done
 signal enemy_left

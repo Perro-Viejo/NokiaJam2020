@@ -4,8 +4,8 @@ var index_sound = -1
 var select_sound
 var canplay
 
-export var Volume = 0
-export var Pitch = 0
+export (float) var Volume = 0
+export (float) var Pitch = 0
 
 export (bool) var RandomVolume
 export (float) var minVolume
@@ -15,25 +15,29 @@ export (bool) var RandomPitch
 export (float) var minPitch
 export (float) var maxPitch
 
+var avVolume
+var avPitch
+
+func _ready():
+	Pitch = Pitch/24
+
 func play():
 	
 	randomize()
 	index_sound = randi()%get_child_count()
-	select_sound = get_child(index_sound)
-#	var avVolume = select_sound.get_volume_db() + Volume
-#	var avPitch = select_sound.get_pitch_scale() + Pitch 
+	select_sound = get_child(index_sound) 
 #
 #	if RandomVolume == true:
 #		select_sound.randomizeVol(avVolume, minVolume, maxVolume)
 #	else:
-#		select_sound.set_volume_db(avVolume)
+#	select_sound.set_volume_db(avVolume)
 #
 #
 #	if RandomPitch == true:
 #		select_sound.randomizePitch(avPitch, minPitch, maxPitch)
 #	#	select_sound.set_pitch_scale((Pitch) + ranPitch)
 #	else:
-#		select_sound.set_pitch_scale(avPitch+1)
+	select_sound.set_pitch_scale(1 + Pitch)
 	select_sound.play()
 	
 	
