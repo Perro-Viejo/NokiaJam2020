@@ -11,6 +11,7 @@ var button;
 
 func _ready():
 	selector = load("res://src/TitleScreen/Selector.tscn").instance()
+	add_child(load("res://src/Main/Managers/AudioManager.tscn").instance())
 	set_selector_in_button()
 
 func update_selector():
