@@ -8,16 +8,17 @@ var min_offset: int = 7
 var time_count_started = false
 
 func _ready() -> void:
-	EventsManager.connect('enemy_approached', self, '_on_enemy_approached')
+	# Conectar señales
 	$Timer.connect('timeout', self, '_on_timeout')
 
-func _on_enemy_approached(smell_time) -> void:
+func start(smell_time: int) -> void:
 	value = max_offset
 	time_count = smell_time
 	current_smell_time = smell_time
 	time_count_started = true
 	$Timer.start(1)
-	
+	show()
+
 func _on_timeout():
 	time_count -= 1
 	value = time_count * max_offset / current_smell_time

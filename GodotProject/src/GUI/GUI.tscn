@@ -52,6 +52,7 @@ __meta__ = {
 }
 
 [node name="SmellBar" type="TextureProgress" parent="Control/LeftPanel/CenterContainer"]
+visible = false
 margin_left = 2.0
 margin_top = 11.0
 margin_right = 12.0
@@ -85,6 +86,7 @@ position = Vector2( 2.38541, 19.7922 )
 position = Vector2( 1.83123, -11.7317 )
 
 [node name="Number" type="TextureRect" parent="Control/RightPanel"]
+visible = false
 margin_left = 2.86147
 margin_top = 20.1054
 margin_right = 14.8615

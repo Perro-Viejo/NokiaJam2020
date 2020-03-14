@@ -1,6 +1,6 @@
 extends Position2D
 class_name Spawner
-""" ════ Variables ═════════════════════════════════════════════════════════ """
+#▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
 enum Side {LEFT = -2, MIDDLE = 0, RIGHT = 2}
 enum Type {RND = -1, WOLF, CAT, PENGUIN}
 
@@ -9,12 +9,9 @@ export(Type) var dflt_type = Type.RND
 
 var spawning: bool = true
 var enemy_types: Array = [
-	load("res://src/Characters/Enemies/Wolf/Wolf.tscn"),
-	load("res://src/Characters/Enemies/Cat/Cat.tscn"),
-	load("res://src/Characters/Enemies/Penguin/Penguin.tscn")
+	load("res://src/Characters/Enemies/Wolf/Wolf.tscn")
 ]
-
-""" ════ Funciones ═════════════════════════════════════════════════════════ """
+#▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _on_Timer_timeout():
 	if not spawning: return
 	

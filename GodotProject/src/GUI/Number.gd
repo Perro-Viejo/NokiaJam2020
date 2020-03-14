@@ -13,12 +13,9 @@ var current_state = NUMBER_TO_PRESS_STATES.READY_TO_NEXT;
 onready var control_node = get_parent().get_parent();
 onready var right_pane_node = get_parent();
 onready var smell_bar = control_node.get_node("LeftPanel/CenterContainer/SmellBar")
-func _ready():
-	EventsManager.connect("possum_pretended", self, "_on_possum_alerted")
-	set_visible(true)
+
 
 func _input(event: InputEvent):
-	
 	if (event is InputEventKey):
 		var pressed_character = (event as InputEventKey).as_text()
 
@@ -32,7 +29,8 @@ func _input(event: InputEvent):
 				control_node.get_node("InfoText").show_bad_message()
 				EventsManager.emit_signal("possum_discovered")
 				EventsManager.emit_signal("play_requested", "UI", "Neg_Fbk")
-	
+
+
 func _on_Timer_timeout():
 	if current_state == NUMBER_TO_PRESS_STATES.PRESSED_WRONG:
 		EventsManager.emit_signal("possum_discovered")
@@ -40,7 +38,7 @@ func _on_Timer_timeout():
 		current_state = NUMBER_TO_PRESS_STATES.READY_TO_NEXT
 		$Tween.interpolate_property(self, "rect_position", right_pane_node.get_node("MiddlePosition").get_position(), right_pane_node.get_node("FinalPosition").get_position(), 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 		$Tween.start()
-		
+
 
 func launch_number():
 	current_state = NUMBER_TO_PRESS_STATES.READY_TO_NEXT
@@ -48,10 +46,12 @@ func launch_number():
 	$NumberToPress.set_text(number_to_press)
 	$Tween.interpolate_property(self, "rect_position", right_pane_node.get_node("InitialPosition").get_position(), right_pane_node.get_node("MiddlePosition").get_position(), 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
-	
-func _on_possum_alerted():
-	set_visible(true)
+
+
+func start():
+	show()
 	launch_number()
+
 
 func _on_Tween_tween_completed(object, key):
 	if get_position() == right_pane_node.get_node("MiddlePosition").get_position():
@@ -63,4 +63,3 @@ func _on_Tween_tween_completed(object, key):
 		elif smell_bar.time_count > 2:
 			print("here2")
 			launch_number()
-	

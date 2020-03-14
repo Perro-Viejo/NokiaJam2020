@@ -1,5 +1,5 @@
 extends "res://src/Characters/Actor.gd"
-
+#▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
 const STATES = {
 	RUNNING = "Running",
 	ALERT = "Alert",
@@ -7,7 +7,8 @@ const STATES = {
 	CONTINUE = "Continue"
 }
 
-var health;
+var health
+#▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _ready() -> void:
 	# Conectar señales
 	EventsManager.connect("possum_alerted", self, "_on_possum_alerted")

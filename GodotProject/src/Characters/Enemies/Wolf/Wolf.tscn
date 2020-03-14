@@ -45,13 +45,14 @@ extents = Vector2( 6, 1 )
 
 [node name="Wolf" type="KinematicBody2D"]
 script = ExtResource( 1 )
-visibility_depth = 6
+visibility_frame = 5
 y_distance = 2
 collision_steps = 8
 smell_time = 5
+watch_ticks = 8
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -18 )
+position = Vector2( 0, -17.5 )
 texture = ExtResource( 2 )
 hframes = 12
 

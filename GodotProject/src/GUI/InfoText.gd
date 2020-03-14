@@ -1,6 +1,5 @@
 extends Label
 
-
 const good_messages = ["Good", "OK!", "Yes", "100%", "+100"]
 const bad_messages = ["Oops", "Bad", "No", "Sad", ":("]
 
@@ -24,4 +23,3 @@ func show_bad_message():
 	
 func _on_Timer_timeout():
 	set_visible(false)
-	

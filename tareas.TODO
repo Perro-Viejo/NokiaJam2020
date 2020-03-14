@@ -1,0 +1,11 @@
+Enemigo básico:
+  ☐ Hay que tener algo para saber cada cuántos world_step va a hacer algo el enemigo.
+  ☐ Hay que tener algo para saber cómo es el desplazamiento en Y por frame.
+	Estados:
+		☐ Aparecer
+		☐ Caminar
+		☐ Observar
+		☐ Correro
+		☐ Olisquear
+		☐ Comer
+		☐ Abandonar

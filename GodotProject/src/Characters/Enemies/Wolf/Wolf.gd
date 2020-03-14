@@ -1,20 +1,20 @@
 extends "res://src/Obstacles/SimpleObstacle.gd"
-
+#▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
 var frames_cfg: Dictionary = {
 	"show": {
-		"frames": [0, 1],
-		"steps_by_frame": [2, 2]
+		"frames": [0, 1, 2, 3],
+		"steps_by_frame": [2, 2, 2, 2],
+		"y_movement": [0, 0, 1, 1]
 	},
 	"walk": {
-		"frames": [2, 3, 4, 5, 6],
-		"steps_by_frame": [1, 1, 2, 2, 14]
+		"frames": [4, 5, 6, 7],
+		"steps_by_frame": [4, 4, 4, 4, 14]
 	}
 }
 var current_frame: int = 0
 var frame: int = 0
 var step: int = 0
-
-
+#▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _ready() -> void:
 	$CollisionShape2D.disabled = true
 	
@@ -23,36 +23,41 @@ func _ready() -> void:
 	for _step in frames_cfg.walk.steps_by_frame:
 		walk_steps += _step
 
+
 func play_show():
-	if frame >= frames_cfg.show.frames.size(): return
+#	if frame >= frames_cfg.show.frames.size(): return
 	
 	$Sprite.set_frame(frames_cfg.show.frames[frame])
-	# NOTA: Aquí se puede poner a sonar un SFX si se quiere
 	
 	step += 1
 	if step > frames_cfg.show.steps_by_frame[frame]:
-		frame += 1
 		step = 0
+		frame = min(frame + 1, frames_cfg.show.frames.size() - 1)
+		position.y += frames_cfg.show.y_movement[frame]
 
+func start_walk() -> void:
+	frame = 0
+	.start_walk()
 
 func play_walk():
-	if frame >= frames_cfg.walk.frames.size(): return
+#	if frame >= frames_cfg.walk.frames.size(): return
 	
 	$Sprite.set_frame(frames_cfg.walk.frames[frame])
 	EventsManager.emit_signal("play_requested", get_name(), "Walk")
+	position += distance
 	
 	step += 1
 	if step > frames_cfg.walk.steps_by_frame[frame]:
-		frame += 1
 		step = 0
+		frame = min(frame + 1, frames_cfg.walk.frames.size() - 1)
 
 
 func play_smell():
-	print('Cuántas veces')
 	smelling = true
 	$Detector/CollisionShape2D.disabled = true
 	$Sprite/AnimationPlayer.play('Smell')
 	EventsManager.emit_signal('enemy_approached', smell_time)
+
 
 func smell_SFX():
 	EventsManager.emit_signal("play_requested", get_name(), "Smell")
