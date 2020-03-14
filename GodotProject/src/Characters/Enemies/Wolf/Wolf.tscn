@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Characters/Enemies/Wolf/Wolf.gd" type="Script" id=1]
 [ext_resource path="res://assets/Characters/Enemies/Wolf/wolf.png" type="Texture" id=2]
+[ext_resource path="res://src/Main/StateMachine/StateMachine.gd" type="Script" id=3]
+[ext_resource path="res://src/Characters/Enemies/Wolf/Appear.gd" type="Script" id=4]
+[ext_resource path="res://src/Characters/Enemies/Wolf/Walk.gd" type="Script" id=5]
+[ext_resource path="res://src/Characters/Enemies/Wolf/Watch.gd" type="Script" id=6]
+[ext_resource path="res://src/Characters/Enemies/Wolf/Smell.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Smell"
@@ -45,7 +50,7 @@ extents = Vector2( 6, 1 )
 
 [node name="Wolf" type="KinematicBody2D"]
 script = ExtResource( 1 )
-visibility_frame = 5
+visibility_frame = 4
 y_distance = 2
 collision_steps = 8
 smell_time = 5
@@ -68,3 +73,19 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 position = Vector2( 0, -1 )
 shape = SubResource( 3 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+initial_state = NodePath("Appear")
+
+[node name="Appear" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="Watch" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="Smell" type="Node" parent="StateMachine"]
+script = ExtResource( 7 )

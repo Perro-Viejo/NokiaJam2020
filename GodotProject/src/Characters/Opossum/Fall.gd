@@ -1,4 +1,4 @@
-extends "res://src/Main/StateMachine/State.gd"
+extends 'res://src/Main/StateMachine/State.gd'
 
 
 func enter(msg: Dictionary = {}) -> void:

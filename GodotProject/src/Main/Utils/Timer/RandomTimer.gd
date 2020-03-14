@@ -7,7 +7,7 @@ export (float, 0, 600) var max_time=15
 func _ready():
 	init_rand()
 	autostart = true
-	connect("timeout", self, "init_rand")
+	connect('timeout', self, 'init_rand')
 	
 	
 func init_rand():

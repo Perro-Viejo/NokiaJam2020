@@ -8,29 +8,29 @@ func _ready() -> void:
 	moving = true
 	
 	# Conectar señales
-	$Timer.connect("timeout", self, "_animate_background")
-	EventsManager.connect("possum_alerted", self, "_on_possum_alerted")
-	EventsManager.connect("enemy_left", self, "_on_enemy_left")
-	EventsManager.connect("possum_awake", self, "_on_possum_awake")
-	add_child(load("res://src/GUI/GUI.tscn").instance())
-	add_child(load("res://src/Main/Managers/AudioManager.tscn").instance())
+	$Timer.connect('timeout', self, '_animate_background')
+	EventsManager.connect('possum_alerted', self, '_on_possum_alerted')
+	EventsManager.connect('enemy_left', self, '_on_enemy_left')
+	EventsManager.connect('possum_awake', self, '_on_possum_awake')
+	add_child(load('res://src/GUI/GUI.tscn').instance())
+	add_child(load('res://src/Main/Managers/AudioManager.tscn').instance())
 	
 	# Iniciar la animación del fondo
 	$Timer.start()
 
 
 func _animate_background() -> void:
-	if not signal_sent:
-		signal_sent = true
-		EventsManager.emit_signal("level_started")
-
 	if moving:
-		$Background.set_frame(current_frame)
 		# Infinite loop between 0 and 9
 		current_frame = wrapi(current_frame + 1, 0, $Background.hframes)
+		$Background.set_frame(current_frame)
 	
-	# Emitir la señal que avisa que se "movió" el fondo
-	EventsManager.emit_signal("world_advanced")
+	if not signal_sent and current_frame == 1:
+		signal_sent = true
+		EventsManager.emit_signal('level_started')
+	
+	# Emitir la señal que avisa que se 'movió' el fondo
+	EventsManager.emit_signal('world_advanced')
 
 
 func _on_possum_alerted() -> void:

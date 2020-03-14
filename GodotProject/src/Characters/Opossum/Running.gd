@@ -1,4 +1,4 @@
-extends "res://src/Main/StateMachine/State.gd"
+extends 'res://src/Main/StateMachine/State.gd'
 
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
@@ -6,5 +6,5 @@ func enter(msg: Dictionary = {}) -> void:
 
 
 func physics_process(delta) -> void:
-	owner.velocity.x = (Input.get_action_strength("move_right") - \
-		Input.get_action_strength("move_left")) * 10
+	owner.velocity.x = (Input.get_action_strength('move_right') - \
+		Input.get_action_strength('move_left')) * 10

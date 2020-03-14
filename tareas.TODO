@@ -1,11 +1,10 @@
 Enemigo básico:
   ☐ Hay que tener algo para saber cada cuántos world_step va a hacer algo el enemigo.
-  ☐ Hay que tener algo para saber cómo es el desplazamiento en Y por frame.
+	☐ Hay que tener algo para saber cómo es el desplazamiento en Y por frame.
+	✔ Hay que crear la máquina de estados. @started(20-03-14 11:06) @done(20-03-14 14:16) @lasted(3h10m5s)
 	Estados:
-		☐ Aparecer
-		☐ Caminar
-		☐ Observar
-		☐ Correro
-		☐ Olisquear
+		✔ Aparecer @done(20-03-14 14:16)
+		✔ Caminar @done(20-03-14 14:16)
+		✔ Observar @done(20-03-14 14:16)
+		✔ Olisquear @done(20-03-14 14:16)
 		☐ Comer
-		☐ Abandonar

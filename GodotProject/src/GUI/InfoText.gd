@@ -1,7 +1,7 @@
 extends Label
 
-const good_messages = ["Good", "OK!", "Yes", "100%", "+100"]
-const bad_messages = ["Oops", "Bad", "No", "Sad", ":("]
+const good_messages = ['Good', 'OK!', 'Yes', '100%', '+100']
+const bad_messages = ['Oops', 'Bad', 'No', 'Sad', ':(']
 
 var show_message = false;
 

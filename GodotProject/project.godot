@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://src/Main/StateMachine/StateMachine.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Wolf",
+"language": "GDScript",
+"path": "res://src/Characters/Enemies/Wolf/Wolf.gd"
 } ]
 _global_script_class_icons={
 "SimpleObstacle": "",
 "Spawner": "",
 "State": "",
-"StateMachine": ""
+"StateMachine": "",
+"Wolf": ""
 }
 
 [application]

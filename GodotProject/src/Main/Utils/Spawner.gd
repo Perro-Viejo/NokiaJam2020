@@ -9,7 +9,7 @@ export(Type) var dflt_type = Type.RND
 
 var spawning: bool = true
 var enemy_types: Array = [
-	load("res://src/Characters/Enemies/Wolf/Wolf.tscn")
+	load('res://src/Characters/Enemies/Wolf/Wolf.tscn')
 ]
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _on_Timer_timeout():
