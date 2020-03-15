@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Characters/Enemies/Wolf/Wolf.gd" type="Script" id=1]
 [ext_resource path="res://assets/Characters/Enemies/Wolf/wolf.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/Characters/Enemies/Wolf/Walk.gd" type="Script" id=5]
 [ext_resource path="res://src/Characters/Enemies/Wolf/Watch.gd" type="Script" id=6]
 [ext_resource path="res://src/Characters/Enemies/Wolf/Smell.gd" type="Script" id=7]
+[ext_resource path="res://src/Characters/Enemies/Wolf/Disappear.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Smell"
@@ -51,10 +52,7 @@ extents = Vector2( 6, 1 )
 [node name="Wolf" type="KinematicBody2D"]
 script = ExtResource( 1 )
 visibility_frame = 4
-y_distance = 2
-collision_steps = 8
-smell_time = 5
-watch_ticks = 8
+smell_time = 16
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -17.5 )
@@ -89,3 +87,6 @@ script = ExtResource( 6 )
 
 [node name="Smell" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
+
+[node name="Disappear" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )

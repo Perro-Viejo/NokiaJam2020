@@ -5,7 +5,8 @@ var tick: int = 0
 var step: int = 0
 var last_frame: int = 3
 var y_by_step: Dictionary = {
-	2: 1
+	2: 2,
+	3: 2
 }
 # Guardar el tipo del owner para que sea más fácil acceder a propiedades y
 # métodos de la clase.
@@ -22,7 +23,7 @@ func world_tick() -> void:
 	if tick == change_tick:
 		tick = 0
 		step += 1
-		_owner.sprite.frame = min(last_frame, _owner.sprite.frame + 1)
+		_owner.sprite.frame = min(last_frame, _owner.sprite.frame + 1) as int
 		if y_by_step.has(step):
 			_owner.position.y += y_by_step[step]
 		if _owner.sprite.frame == last_frame:
