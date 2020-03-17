@@ -5,10 +5,10 @@ var tick: int = 0
 var step: int = 0
 var last_frame: int = 7
 var y_by_step: Dictionary = {
-	1: 3,
-	2: 5,
-	3: 9,
-	4: 13
+	1: 3,	# 3
+	2: 5,	# 5
+	3: 9,	# 9
+	4: 13	# 13
 }
 var running: bool = false
 # Guardar el tipo del owner para que sea más fácil acceder a propiedades y
