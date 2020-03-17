@@ -1,92 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/Characters/Enemies/Wolf/Wolf.gd" type="Script" id=1]
-[ext_resource path="res://assets/Characters/Enemies/Wolf/wolf.png" type="Texture" id=2]
-[ext_resource path="res://src/Main/StateMachine/StateMachine.gd" type="Script" id=3]
-[ext_resource path="res://src/Characters/Enemies/Wolf/Appear.gd" type="Script" id=4]
-[ext_resource path="res://src/Characters/Enemies/Wolf/Walk.gd" type="Script" id=5]
-[ext_resource path="res://src/Characters/Enemies/Wolf/Watch.gd" type="Script" id=6]
-[ext_resource path="res://src/Characters/Enemies/Wolf/Smell.gd" type="Script" id=7]
-[ext_resource path="res://src/Characters/Enemies/Wolf/Disappear.gd" type="Script" id=8]
+[ext_resource path="res://src/Characters/Enemies/Enemy.tscn" type="PackedScene" id=1]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Smell"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 8, 9, 10, 11 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.4, 1.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "smell_SFX"
-}, {
-"args": [  ],
-"method": "smell_SFX"
-} ]
-}
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3, 3 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 6, 1 )
-
-[node name="Wolf" type="KinematicBody2D"]
-script = ExtResource( 1 )
-visibility_frame = 4
+[node name="Wolf" instance=ExtResource( 1 )]
+visibility_frame = 5
 smell_time = 16
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -17.5 )
-texture = ExtResource( 2 )
-hframes = 12
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/Smell = SubResource( 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -12 )
-shape = SubResource( 2 )
-
-[node name="Detector" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
-position = Vector2( 0, -1 )
-shape = SubResource( 3 )
-
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource( 3 )
-initial_state = NodePath("Appear")
-
-[node name="Appear" type="Node" parent="StateMachine"]
-script = ExtResource( 4 )
-
-[node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource( 5 )
-
-[node name="Watch" type="Node" parent="StateMachine"]
-script = ExtResource( 6 )
-
-[node name="Smell" type="Node" parent="StateMachine"]
-script = ExtResource( 7 )
-
-[node name="Disappear" type="Node" parent="StateMachine"]
-script = ExtResource( 8 )
+[node name="Sprite" parent="." index="0"]
+frame = 0

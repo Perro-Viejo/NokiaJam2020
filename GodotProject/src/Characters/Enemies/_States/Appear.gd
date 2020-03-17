@@ -10,7 +10,7 @@ var y_by_step: Dictionary = {
 }
 # Guardar el tipo del owner para que sea más fácil acceder a propiedades y
 # métodos de la clase.
-onready var _owner: Wolf = owner as Wolf
+onready var _owner: Enemy = owner as Enemy
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)

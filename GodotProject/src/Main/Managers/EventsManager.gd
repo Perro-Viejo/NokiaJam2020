@@ -9,6 +9,7 @@ signal possum_awake
 signal enemy_approached(smell_time)
 signal possum_done
 signal enemy_left
+signal object_left
 signal level_started
 signal world_advanced
 

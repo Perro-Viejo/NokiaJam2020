@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/Obstacles/Box/Box.gd" type="Script" id=1]
+[ext_resource path="res://src/Obstacles/Fruit/Fruit.gd" type="Script" id=1]
 [ext_resource path="res://assets/Characters/Obstacle/Box/Box.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -26,10 +26,8 @@ extents = Vector2( 3, 3 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5, 5 )
 
-[node name="Box" type="KinematicBody2D"]
+[node name="Fruit" type="KinematicBody2D"]
 script = ExtResource( 1 )
-visibility_depth = 0
-distance = Vector2( 2, 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

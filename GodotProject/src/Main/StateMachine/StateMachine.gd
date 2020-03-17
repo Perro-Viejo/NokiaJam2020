@@ -8,7 +8,7 @@ Generic State Machine. Initializes states and delegates engine callbacks
 export var initial_state: = NodePath()
 
 onready var state: State = get_node(initial_state) setget set_state
-onready var _state_name: = state.name
+onready var _state_name: String = state.name
 onready var _previous_state
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _init() -> void:

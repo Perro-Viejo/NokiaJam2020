@@ -1,8 +1,12 @@
 extends 'res://src/Obstacles/SimpleObstacle.gd'
-class_name Wolf
+class_name Enemy
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
+export(int) var visibility_frame: int = 0
+export(bool) var hungry: bool = true
+export(int) var smell_time: int = 0
+
 const STATES = {
-	APPEAR = 'Appear',			# Cuando aparece en la leganía
+	APPEAR = 'Appear',			# Cuando aparece en la lejanía
 	WALK = 'Walk',				# Cuando camina
 	WATCH = 'Watch',			# Cuando se pilla a la Runcha
 	SMELL = 'Smell',			# Cuando está olisqueando
