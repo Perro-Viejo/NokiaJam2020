@@ -20,12 +20,14 @@ var avPitch
 
 func _ready():
 	Pitch = Pitch/24
+	
 
 func play():
 	
 	randomize()
 	index_sound = randi()%get_child_count()
-	select_sound = get_child(index_sound) 
+	select_sound = get_child(index_sound)
+	var original_pitch = select_sound.get_pitch_scale()
 #
 #	if RandomVolume == true:
 #		select_sound.randomizeVol(avVolume, minVolume, maxVolume)
@@ -37,8 +39,8 @@ func play():
 #		select_sound.randomizePitch(avPitch, minPitch, maxPitch)
 #	#	select_sound.set_pitch_scale((Pitch) + ranPitch)
 #	else:
-	select_sound.set_pitch_scale(1 + Pitch)
 	select_sound.play()
+	select_sound.set_pitch_scale(original_pitch + Pitch)
 	
 	
 func randomizeVol(Volume, minVolume, maxVolume):

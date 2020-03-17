@@ -29,11 +29,11 @@ position = Vector2( 43, 39 )
 [node name="Bounds" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( -5, 27 )
+position = Vector2( 10, 27 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 89, 27 )
+position = Vector2( 74, 27 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]

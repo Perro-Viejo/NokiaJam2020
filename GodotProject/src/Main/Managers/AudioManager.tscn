@@ -59,7 +59,7 @@ stream = ExtResource( 13 )
 
 [node name="Smell" type="Node2D" parent="Wolf"]
 script = ExtResource( 2 )
-Pitch = 10.0
+Pitch = 24.0
 
 [node name="Smell_01" type="AudioStreamPlayer" parent="Wolf/Smell"]
 stream = ExtResource( 8 )
