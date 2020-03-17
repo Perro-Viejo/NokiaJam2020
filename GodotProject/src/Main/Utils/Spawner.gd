@@ -19,6 +19,7 @@ func _on_Timer_timeout():
 	var object = null
 	if dflt_type == Type.RND:
 		# Elegir un objeto al azar y parirlo
+		randomize()
 		object_types.shuffle()
 		object = object_types[0].instance() as SimpleObstacle
 	else:

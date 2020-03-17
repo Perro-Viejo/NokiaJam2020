@@ -1,8 +1,11 @@
 extends Node2D
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
+export(int) var advance_tick = 2
+
 var current_frame: int = 0
 var signal_sent: bool = false
 var moving: bool = false
+var tick_count: int = 0
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _ready() -> void:
 	moving = true
@@ -23,17 +26,24 @@ func _ready() -> void:
 
 
 func _animate_background() -> void:
+	if not signal_sent and current_frame == 0:
+		signal_sent = true
+		EventsManager.emit_signal('level_started')
+	
 	if moving:
 		# Infinite loop between 0 and 9
 		current_frame = wrapi(current_frame + 1, 0, $Background.hframes)
 		$Background.set_frame(current_frame)
 	
-	if not signal_sent and current_frame == 1:
-		signal_sent = true
-		EventsManager.emit_signal('level_started')
+	tick_count += 1
+	if tick_count == advance_tick:
+		tick_count = 0
+	
+		# Emitir la señal que avisa que se 'movió' el fondo
+		EventsManager.emit_signal('world_advanced')
 	
 	# Emitir la señal que avisa que se 'movió' el fondo
-	EventsManager.emit_signal('world_advanced')
+	EventsManager.emit_signal('world_tick')
 
 
 func _on_possum_alerted() -> void:

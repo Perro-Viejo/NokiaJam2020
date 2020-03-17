@@ -1,4 +1,5 @@
 extends 'res://src/Characters/Actor.gd'
+class_name Opossum
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
 const STATES = {
 	RUNNING = 'Running',
@@ -8,20 +9,28 @@ const STATES = {
 }
 
 var health
+
+onready var _sprite: Sprite = $Sprite
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _ready() -> void:
 	# Conectar señales
 	EventsManager.connect('possum_alerted', self, '_on_possum_alerted')
 	EventsManager.connect('enemy_left', self, '_on_enemy_left')
+	EventsManager.connect('world_tick', self, '_on_world_tick')
 	
 	# Establecer estado por defecto de algunas mierdas
 	$Sprite/Alert.hide()
 
 
+func _on_world_tick():
+	$StateMachine.state.world_tick()
+
+
 func play_animation(code, previous_state = ''):
 	match code:
 		STATES.RUNNING:
-			$Sprite/AnimationPlayer.play('Running', -1, 5)
+			# $Sprite/AnimationPlayer.play('Running', -1, 5)
+			pass
 		STATES.ALERT:
 			$Sprite/AnimationPlayer.play('Alert')
 		STATES.PLAY_POSSUM:

@@ -12,6 +12,7 @@ signal enemy_left
 signal object_left
 signal level_started
 signal world_advanced
+signal world_tick
 
 # AudioManager -----------------------------------------------------------------
 signal play_requested(source, sound)

@@ -31,6 +31,7 @@ func enter(msg: Dictionary = {}) -> void:
 func world_tick() -> void:
 	pass
 
+
 func exit() -> void:
 	print('%s exits %s' % [ owner.name, name ])
 	pass
