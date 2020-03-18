@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/Main/Audio/SequenceTool.gd" type="Script" id=1]
 [ext_resource path="res://src/Main/Audio/RandomTool.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/audio/SFX_Wolf_Smell_02.ogg" type="AudioStream" id=14]
 [ext_resource path="res://assets/audio/SFX_Wake.ogg" type="AudioStream" id=15]
 [ext_resource path="res://assets/audio/SFX_GenEnemy_Walk_01.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/audio/UI_PickupFruit.ogg" type="AudioStream" id=17]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 3 )
@@ -81,3 +82,6 @@ pitch_scale = 2.0
 [node name="Select" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource( 15 )
 pitch_scale = 1.9
+
+[node name="PickupFruit" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 17 )

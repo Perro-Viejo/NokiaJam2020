@@ -13,6 +13,7 @@ signal object_left
 signal level_started
 signal world_advanced
 signal world_tick
+signal item_picked(count)
 
 # AudioManager -----------------------------------------------------------------
 signal play_requested(source, sound)

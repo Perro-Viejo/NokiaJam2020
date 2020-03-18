@@ -9,6 +9,8 @@ func _ready() -> void:
 # warning-ignore:return_value_discarded
 	EventsManager.connect('enemy_left', self, '_on_enemy_left')
 	
+	EventsManager.connect('item_picked', self, '_on_item_picked')
+	
 	# Establecer estado por defecto de la escena
 	$Control.hide()
 
@@ -24,3 +26,10 @@ func _on_enemy_approached(smell_time: int) -> void:
 
 func _on_enemy_left() -> void:
 	$Control.hide()
+	
+func _on_item_picked(count) -> void:
+	$AnimationPlayer.play("ShowCounter")
+	$FruitCount.count_fruit(count)
+	print('he recogido la suma cantidad de ', count)
+	
+	

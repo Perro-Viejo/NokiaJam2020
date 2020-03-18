@@ -20,7 +20,7 @@ func _on_world_moved() -> void:
 		if bodies.size() > 1:
 			match bodies[0].name:
 				'Opossum':
-					print('¡Ay vida hijueputa! me pegué en la pata!')
+					bodies[0].pickup_fruit()
 				'Bounds':
 					print('Adiós adiocín, se despide un obstaculín')
 			EventsManager.emit_signal('object_left')

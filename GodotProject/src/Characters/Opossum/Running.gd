@@ -1,6 +1,6 @@
 extends 'res://src/Main/StateMachine/State.gd'
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
-var step_tick = 1
+var step_tick = 2
 var tick_count: int = 0
 
 onready var _owner: Opossum = owner as Opossum

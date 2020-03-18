@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UI_PickupFruit.ogg-90d370e371f7a842735ef13c0a6ac0e8.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/UI_PickupFruit.ogg"
+dest_files=[ "res://.import/UI_PickupFruit.ogg-90d370e371f7a842735ef13c0a6ac0e8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

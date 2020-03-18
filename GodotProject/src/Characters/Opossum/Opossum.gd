@@ -9,6 +9,7 @@ const STATES = {
 }
 
 var health
+var collected_fruit = 0
 
 onready var _sprite: Sprite = $Sprite
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
@@ -51,6 +52,13 @@ func _on_possum_alerted():
 
 func _on_enemy_left():
 	$StateMachine.transition_to(STATES.CONTINUE)
+	
+
+func pickup_fruit():
+	collected_fruit += 1
+	EventsManager.emit_signal('item_picked', collected_fruit)
+	EventsManager.emit_signal('play_requested' , "UI", 'PickupFruit')
+	
 
 
 #--------Llamadas pal Audio Manager---------

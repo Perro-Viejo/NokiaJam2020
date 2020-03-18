@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/GUI/fruit_pressed.png" type="Texture" id=1]
+[ext_resource path="res://assets/GUI/fruit_normal.png" type="Texture" id=2]
+
+[node name="Fruit" type="TextureButton"]
+margin_right = 40.0
+margin_bottom = 40.0
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
