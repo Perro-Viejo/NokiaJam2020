@@ -5,7 +5,7 @@ export(int) var visibility_frame: int = 0
 export(bool) var hungry: bool = true
 export(int) var smell_time: int = 0
 
-const STATES = {
+const STATES: Dictionary = {
 	APPEAR = 'Appear',			# Cuando aparece en la lejanía
 	WALK = 'Walk',				# Cuando camina
 	WATCH = 'Watch',			# Cuando se pilla a la Runcha

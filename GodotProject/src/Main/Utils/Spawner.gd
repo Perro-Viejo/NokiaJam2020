@@ -14,7 +14,6 @@ var spawning: bool = true
 var object_types: Array = [
 	load('res://src/Characters/Enemies/Wolf/Wolf.tscn'),
 	load('res://src/Obstacles/Fruit/Fruit.tscn'),
-	load('res://src/Obstacles/Fruit/Fruit.tscn')
 ]
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _on_Timer_timeout():

@@ -19,3 +19,9 @@ signal level_finished(condition)
 
 # AudioManager -----------------------------------------------------------------
 signal play_requested(source, sound)
+
+# Constantes -------------------------------------------------------------------
+const FINISH_TYPE = {
+	'Victory': 'V',
+	'DEFEAT': 'D'
+}

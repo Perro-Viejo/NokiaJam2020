@@ -1,12 +1,12 @@
 extends TextureProgress
-
+#▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
 var time_count: int = 0
 var current_smell_time: int = 0
 var max_offset: int = 93
 var min_offset: int = 7
 
 var time_count_started = false
-
+#▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _ready() -> void:
 	# Conectar señales
 	$Timer.connect('timeout', self, '_on_timeout')
@@ -27,3 +27,7 @@ func _on_timeout():
 		$Timer.stop()
 		time_count_started = false
 		EventsManager.emit_signal('possum_done')
+
+
+func stop() -> void:
+	$Timer.stop()

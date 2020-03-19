@@ -8,7 +8,7 @@ func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
 	
 	_owner.get_node('Detector/CollisionShape2D').disabled = true
-	_owner.get_node('Sprite/AnimationPlayer').play('Smell')
+	_owner.animator.play('Smell')
 	
 	# Conectar señales
 	EventsManager.connect(
@@ -24,6 +24,7 @@ func enter(msg: Dictionary = {}) -> void:
 
 func exit() -> void:
 	.exit()
+	_owner.animator.stop()
 	EventsManager.disconnect(
 		'possum_discovered',
 		_state_machine,

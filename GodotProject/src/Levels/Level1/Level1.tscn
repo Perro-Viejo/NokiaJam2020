@@ -45,6 +45,7 @@ shape = SubResource( 2 )
 
 [node name="Spawner" parent="Spawners" instance=ExtResource( 4 )]
 position = Vector2( 42, 9 )
+dflt_type = 0
 
 [node name="Timer" parent="Spawners/Spawner" index="0"]
 min_time = 3.0

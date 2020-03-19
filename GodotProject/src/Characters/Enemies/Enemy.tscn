@@ -57,7 +57,6 @@ script = ExtResource( 7 )
 position = Vector2( 0, -17.5 )
 texture = ExtResource( 1 )
 hframes = 12
-frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Smell = SubResource( 1 )

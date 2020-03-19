@@ -4,7 +4,6 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Eat"
-length = 1.7
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -12,20 +11,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6, 0.7, 0.9, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 8, 12, 13, 14, 15 ]
 }
 
 [node name="Wolf" instance=ExtResource( 1 )]
+y_speed = 5
 visibility_frame = 5
 smell_time = 16
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, -19 )
 hframes = 16
-frame = 0
 
 [node name="AnimationPlayer" parent="Sprite" index="0"]
 anims/Eat = SubResource( 1 )
