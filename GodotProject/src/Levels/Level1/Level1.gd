@@ -1,4 +1,5 @@
 extends Node2D
+
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
 export(int) var advance_tick = 2
 export (int) var fruit_goal = 5
@@ -72,10 +73,16 @@ func _on_possum_awake() ->void:
 func _on_item_picked(count) -> void:
 	if count == fruit_goal:
 		finish_level()
-		EventsManager.emit_signal("level_finished", 'Victory')
 		print("Ganastes Gonorrea!")
 
-func finish_level():
-	moving = false
+func finish_level() -> void:
 	for spawner in $Spawners.get_children():
-		spawner.spawning = false 
+		var _spawner: Spawner = spawner as Spawner
+		if _spawner:
+			_spawner.stop_spawner()
+			yield(get_tree().create_timer(2), "timeout")
+			_spawner.spawn_den()
+	yield(get_tree().create_timer(4.7), "timeout")
+	
+	moving = false
+	EventsManager.emit_signal("level_finished", 'Victory')

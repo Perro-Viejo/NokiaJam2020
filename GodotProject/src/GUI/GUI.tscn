@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/GUI/GUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/GUI/vignette.png" type="Texture" id=2]
@@ -14,22 +14,24 @@
 [ext_resource path="res://src/GUI/FruitCount.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/GUI/FruitCounter.tscn" type="PackedScene" id=13]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 15, 48 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 15, 48 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 18
+outline_size = 1
+outline_color = Color( 0.780392, 0.941176, 0.847059, 1 )
 font_data = ExtResource( 10 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "ShowCounter"
+[sub_resource type="Animation" id=8]
 length = 3.0
 step = 0.05
 tracks/0/type = "value"
@@ -44,6 +46,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 5, -6 ), Vector2( 5, 2 ), Vector2( 5, 0 ), Vector2( 5, 0 ), Vector2( 5, 3 ), Vector2( 5, -6 ) ]
 }
+
+[sub_resource type="DynamicFont" id=9]
+size = 10
+outline_size = 1
+outline_color = Color( 0.780392, 0.941176, 0.847059, 1 )
+extra_spacing_bottom = -6
+font_data = ExtResource( 10 )
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -65,7 +74,7 @@ texture = ExtResource( 2 )
 [node name="LeftPanel" type="Panel" parent="Control"]
 anchor_bottom = 1.0
 margin_right = 15.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 5 )
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/LeftPanel"]
 anchor_right = 1.0
@@ -97,7 +106,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -14.0
 margin_right = 1.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 6 )
 
 [node name="InitialPosition" type="Position2D" parent="Control/RightPanel"]
 position = Vector2( 2.00884, 50.3595 )
@@ -128,7 +137,7 @@ margin_top = -3.3073
 margin_right = 10.801
 margin_bottom = 11.6927
 rect_pivot_offset = Vector2( 3.73515, 7.68207 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 text = "2"
 align = 1
@@ -163,7 +172,41 @@ margin_right = 4.0
 margin_bottom = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ShowCounter = SubResource( 5 )
+anims/ShowCounter = SubResource( 8 )
+
+[node name="Victory" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = -1.0
+margin_right = 40.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+text = "¡GANASTES!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Presionameste" type="Label" parent="Victory"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 14.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+text = "Presiona una tecla para continuar"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 [connection signal="tween_completed" from="Control/RightPanel/Number/Tween" to="Control/RightPanel/Number" method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="Control/RightPanel/Number/Timer" to="Control/RightPanel/Number" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Control/InfoText/Timer" to="Control/InfoText" method="_on_Timer_timeout"]

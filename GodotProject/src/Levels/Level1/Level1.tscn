@@ -13,7 +13,7 @@ extents = Vector2( 49, 10 )
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 1 )
-fruit_goal = 3
+fruit_goal = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.17

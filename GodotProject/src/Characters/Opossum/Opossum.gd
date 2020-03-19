@@ -5,7 +5,8 @@ const STATES = {
 	RUNNING = 'Running',
 	ALERT = 'Alert',
 	PLAY_POSSUM = 'PlayPossum',
-	CONTINUE = 'Continue'
+	CONTINUE = 'Continue',
+	IDLE = 'Idle'
 }
 
 var health
@@ -18,6 +19,7 @@ func _ready() -> void:
 	EventsManager.connect('possum_alerted', self, '_on_possum_alerted')
 	EventsManager.connect('enemy_left', self, '_on_enemy_left')
 	EventsManager.connect('world_tick', self, '_on_world_tick')
+	EventsManager.connect("level_finished", self, '_on_level_finished')
 	
 	# Establecer estado por defecto de algunas mierdas
 	$Sprite/Alert.hide()
@@ -44,6 +46,8 @@ func play_animation(code, previous_state = ''):
 			yield(get_tree().create_timer(0.2), 'timeout')
 			EventsManager.emit_signal('possum_awake')
 			$StateMachine.transition_to(STATES.RUNNING)
+		STATES.IDLE:
+			$Sprite/AnimationPlayer.stop()
 
 
 func _on_possum_alerted():
@@ -60,6 +64,9 @@ func pickup_fruit():
 	EventsManager.emit_signal('play_requested' , "UI", 'PickupFruit')
 	
 
+func _on_level_finished(condition):
+	if condition == 'Victory':
+		$StateMachine.transition_to(STATES.IDLE)
 
 #--------Llamadas pal Audio Manager---------
 func play_walk():
