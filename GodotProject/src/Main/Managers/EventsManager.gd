@@ -14,6 +14,8 @@ signal level_started
 signal world_advanced
 signal world_tick
 signal item_picked(count)
+signal level_finished(condition)
+
 
 # AudioManager -----------------------------------------------------------------
 signal play_requested(source, sound)

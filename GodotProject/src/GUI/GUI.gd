@@ -13,6 +13,9 @@ func _ready() -> void:
 	
 	# Establecer estado por defecto de la escena
 	$Control.hide()
+	
+	# Cargar valores del nivel
+	$FruitCount.fruit_limit = get_parent().fruit_goal
 
 
 func _on_possum_alerted() -> void:
@@ -30,6 +33,5 @@ func _on_enemy_left() -> void:
 func _on_item_picked(count) -> void:
 	$AnimationPlayer.play("ShowCounter")
 	$FruitCount.count_fruit(count)
-	print('he recogido la suma cantidad de ', count)
 	
 	
