@@ -16,6 +16,7 @@ const STATES = {
 
 onready var sprite: Sprite = $Sprite
 onready var collision_shape: CollisionShape2D = $CollisionShape2D
+onready var animator: AnimationPlayer = $Sprite/AnimationPlayer
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _ready() -> void:
 	$CollisionShape2D.disabled = true

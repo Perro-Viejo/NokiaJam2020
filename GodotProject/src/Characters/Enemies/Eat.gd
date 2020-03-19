@@ -1,31 +1,22 @@
 extends "res://src/Main/StateMachine/State.gd"
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
+var change_tick: int = 1
+var tick: int = 0
 # Guardar el tipo del owner para que sea más fácil acceder a propiedades y
 # métodos de la clase.
 onready var _owner: Enemy = owner as Enemy
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
-	
-	_owner.get_node('Detector/CollisionShape2D').disabled = true
-	_owner.get_node('Sprite/AnimationPlayer').play('Smell')
-	
-	# Conectar señales
-	EventsManager.connect(
-		'possum_discovered',
-		_state_machine,
-		'transition_to',
-		[_owner.STATES.EAT]
-	)
-	
-	# Emitir señales
-	EventsManager.emit_signal('enemy_approached', _owner.smell_time)
+#	tick = 0
+	_owner.animator.play("Eat")
+	yield(_owner.animator, 'animation_finished')
+	print('Me la comí y estuvo rico rico rcio')
+#	EventsManager.emit_signal("level_finished", 'Defeat')
 
 
-func exit() -> void:
-	.exit()
-	EventsManager.disconnect(
-		'possum_discovered',
-		_state_machine,
-		'transition_to'
-	)
+#func world_tick() -> void:
+#	tick += 1
+#
+#	if tick >= change_tick:
+#		tick = 0
