@@ -22,8 +22,6 @@ func _ready() -> void:
 # warning-ignore:return_value_discarded
 	EventsManager.connect('level_finished', self, '_on_level_finished')
 	
-	EventsManager.connect('level_finished', self, '_on_level_finished')
-	
 	# Establecer estado por defecto de la escena
 	$Control.hide()
 	_bite.hide()
