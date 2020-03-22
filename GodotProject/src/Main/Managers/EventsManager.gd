@@ -15,6 +15,7 @@ signal world_advanced
 signal world_tick
 signal item_picked(count)
 signal level_finished(condition)
+signal level_restarted()
 
 
 # AudioManager -----------------------------------------------------------------
@@ -22,6 +23,6 @@ signal play_requested(source, sound)
 
 # Constantes -------------------------------------------------------------------
 const FINISH_TYPE = {
-	'Victory': 'V',
+	'VICTORY': 'V',
 	'DEFEAT': 'D'
 }

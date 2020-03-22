@@ -36,6 +36,7 @@ outline_color = Color( 0.780392, 0.941176, 0.847059, 1 )
 font_data = ExtResource( 10 )
 
 [sub_resource type="Animation" id=5]
+resource_name = "Close"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -53,6 +54,7 @@ tracks/0/keys = {
 [sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="Animation" id=7]
+resource_name = "ShowCounter"
 length = 3.0
 step = 0.05
 tracks/0/type = "value"
@@ -77,6 +79,7 @@ font_data = ExtResource( 10 )
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 1 )
+test = 2
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -127,9 +130,6 @@ anchor_bottom = 1.0
 margin_left = -14.0
 margin_right = 1.0
 custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="InitialPosition" type="Position2D" parent="Control/RightPanel"]
 position = Vector2( 2.00884, 50.3595 )
@@ -289,11 +289,13 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="Control/Lose"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -7.5
-margin_bottom = 7.5
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -42.0
+margin_top = 16.5
+margin_right = 42.0
+margin_bottom = 31.5
+rect_pivot_offset = Vector2( 42, 7 )
 size_flags_horizontal = 5
 size_flags_vertical = 5
 custom_fonts/font = ExtResource( 15 )

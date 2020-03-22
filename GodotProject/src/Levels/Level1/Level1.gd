@@ -1,5 +1,4 @@
 extends Node2D
-
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
 export(int) var advance_tick = 2
 export (int) var fruit_goal = 5
@@ -13,15 +12,25 @@ func _ready() -> void:
 	moving = true
 	
 	# Conectar señales
+# warning-ignore:return_value_discarded
 	$Timer.connect('timeout', self, '_animate_background')
+# warning-ignore:return_value_discarded
 	EventsManager.connect('possum_alerted', self, '_on_possum_alerted')
+# warning-ignore:return_value_discarded
 	EventsManager.connect('possum_awake', self, '_on_possum_awake')
+# warning-ignore:return_value_discarded
 	EventsManager.connect('enemy_left', self, '_on_object_left')
+# warning-ignore:return_value_discarded
 	EventsManager.connect('object_left', self, '_on_object_left')
+# warning-ignore:return_value_discarded
 	EventsManager.connect('item_picked', self, '_on_item_picked')
+# warning-ignore:return_value_discarded
+	EventsManager.connect('level_restarted', self, '_on_level_restarted')
 	
+	var _gui: GUI = load('res://src/GUI/GUI.tscn').instance()
+	_gui.initialize(fruit_goal)
 	
-	add_child(load('res://src/GUI/GUI.tscn').instance())
+	add_child(_gui)
 	add_child(load('res://src/Main/Managers/AudioManager.tscn').instance())
 	
 	# Iniciar la animación del fondo
@@ -70,10 +79,16 @@ func _on_possum_awake() ->void:
 	#$Timer.paused = false
 	moving = true
 
+
 func _on_item_picked(count) -> void:
 	if count == fruit_goal:
 		finish_level()
 		print("Ganastes Gonorrea!")
+
+
+func _on_level_restarted() -> void:
+	get_tree().reload_current_scene()
+
 
 func finish_level() -> void:
 	for spawner in $Spawners.get_children():
