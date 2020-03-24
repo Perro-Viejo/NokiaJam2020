@@ -23,6 +23,8 @@ func _input(event: InputEvent):
 				current_state = NUMBER_TO_PRESS_STATES.PRESSED_CORRECT
 				control_node.get_node('InfoText').show_good_message()
 				EventsManager.emit_signal('play_requested', 'UI', 'Pos_Fbk')
+				for _particles in $Pos_Fbk.get_children():
+					_particles.set_emitting(true)
 			else:
 				current_state = NUMBER_TO_PRESS_STATES.PRESSED_WRONG
 				lose_minigame()
