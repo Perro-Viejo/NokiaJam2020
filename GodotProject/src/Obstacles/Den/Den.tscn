@@ -6,7 +6,6 @@
 [sub_resource type="Animation" id=1]
 resource_name = "Attacking"
 length = 6.0
-step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -33,6 +32,35 @@ tracks/1/keys = {
 "method": "stop_moving"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 2, 2.9, 3.9, 4.8, 5.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "approach_sfx"
+}, {
+"args": [  ],
+"method": "approach_sfx"
+}, {
+"args": [  ],
+"method": "approach_sfx"
+}, {
+"args": [  ],
+"method": "approach_sfx"
+}, {
+"args": [  ],
+"method": "approach_sfx"
+}, {
+"args": [  ],
+"method": "approach_sfx"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 3 )
@@ -47,7 +75,6 @@ y_speed = 1
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 7
-frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "Attacking"

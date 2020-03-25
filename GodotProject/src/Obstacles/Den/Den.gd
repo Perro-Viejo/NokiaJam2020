@@ -3,6 +3,8 @@ extends 'res://src/Obstacles/SimpleObstacle.gd'
 export(int) var collision_frame = 3
 
 var can_move = true
+
+
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _ready():
 	$CollisionShape2D.disabled = true
@@ -31,4 +33,7 @@ func _on_world_moved() -> void:
 
 func stop_moving():
 	can_move = false
+
+func approach_sfx():
+		EventsManager.emit_signal('play_requested', 'UI', 'Den')
 

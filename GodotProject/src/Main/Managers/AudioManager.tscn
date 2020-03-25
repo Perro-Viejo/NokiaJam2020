@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/Main/Audio/SequenceTool.gd" type="Script" id=1]
 [ext_resource path="res://src/Main/Audio/RandomTool.gd" type="Script" id=2]
@@ -17,6 +17,18 @@
 [ext_resource path="res://assets/audio/SFX_Wake.ogg" type="AudioStream" id=15]
 [ext_resource path="res://assets/audio/SFX_GenEnemy_Walk_01.ogg" type="AudioStream" id=16]
 [ext_resource path="res://assets/audio/UI_PickupFruit.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/audio/SFX_Eat.ogg" type="AudioStream" id=18]
+[ext_resource path="res://assets/audio/SFX_Den_01.ogg" type="AudioStream" id=19]
+[ext_resource path="res://src/Main/Managers/Den.gd" type="Script" id=20]
+[ext_resource path="res://assets/audio/SFX_Den_05.ogg" type="AudioStream" id=21]
+[ext_resource path="res://assets/audio/SFX_Den_02.ogg" type="AudioStream" id=22]
+[ext_resource path="res://assets/audio/SFX_Den_04.ogg" type="AudioStream" id=23]
+[ext_resource path="res://assets/audio/SFX_Den_06.ogg" type="AudioStream" id=24]
+[ext_resource path="res://assets/audio/SFX_Den_03.ogg" type="AudioStream" id=25]
+[ext_resource path="res://assets/audio/UI_Win.ogg" type="AudioStream" id=26]
+[ext_resource path="res://assets/audio/MX_Bite.ogg" type="AudioStream" id=27]
+[ext_resource path="res://assets/audio/MX_Lose.ogg" type="AudioStream" id=28]
+[ext_resource path="res://assets/audio/MX_Win.ogg" type="AudioStream" id=29]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource( 3 )
@@ -67,6 +79,9 @@ stream = ExtResource( 8 )
 [node name="Smell_02" type="AudioStreamPlayer" parent="Wolf/Smell"]
 stream = ExtResource( 14 )
 
+[node name="Eat" type="AudioStreamPlayer" parent="Wolf"]
+stream = ExtResource( 18 )
+
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Pos_Fbk" type="AudioStreamPlayer" parent="UI"]
@@ -85,3 +100,43 @@ pitch_scale = 1.9
 
 [node name="PickupFruit" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource( 17 )
+
+[node name="Sub" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 17 )
+
+[node name="Win" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 26 )
+
+[node name="Den" type="Node2D" parent="UI"]
+script = ExtResource( 20 )
+
+[node name="Den_01" type="AudioStreamPlayer" parent="UI/Den"]
+stream = ExtResource( 19 )
+
+[node name="Den_02" type="AudioStreamPlayer" parent="UI/Den"]
+stream = ExtResource( 22 )
+
+[node name="Den_03" type="AudioStreamPlayer" parent="UI/Den"]
+stream = ExtResource( 25 )
+
+[node name="Den_04" type="AudioStreamPlayer" parent="UI/Den"]
+stream = ExtResource( 23 )
+
+[node name="Den_05" type="AudioStreamPlayer" parent="UI/Den"]
+stream = ExtResource( 21 )
+
+[node name="Den_06" type="AudioStreamPlayer" parent="UI/Den"]
+stream = ExtResource( 24 )
+
+[node name="MX" type="Node2D" parent="."]
+
+[node name="Bite" type="AudioStreamPlayer" parent="MX"]
+stream = ExtResource( 27 )
+
+[node name="Lose" type="AudioStreamPlayer" parent="MX"]
+stream = ExtResource( 28 )
+volume_db = -4.0
+
+[node name="Win" type="AudioStreamPlayer" parent="MX"]
+stream = ExtResource( 29 )
+volume_db = -4.0

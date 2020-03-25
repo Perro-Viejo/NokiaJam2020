@@ -8,6 +8,7 @@ func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	_owner.animator.play('Eat')
+	EventsManager.emit_signal('play_requested', 'Wolf', 'Eat')
 	yield(_owner.animator, 'animation_finished')
 	print('Me la comí y estuvo rico rico rcio')
 	EventsManager.emit_signal(

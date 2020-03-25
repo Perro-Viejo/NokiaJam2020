@@ -29,13 +29,13 @@ region_rect = Rect2( 0, 0, 15, 48 )
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 18
 outline_size = 1
 outline_color = Color( 0.780392, 0.941176, 0.847059, 1 )
 font_data = ExtResource( 10 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -50,9 +50,9 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -84, 0 ), Vector2( -168, 0 ), Vector2( -252, 0 ), Vector2( -336, 0 ), Vector2( -420, 0 ) ]
 }
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 3.0
 step = 0.05
 tracks/0/type = "value"
@@ -68,7 +68,7 @@ tracks/0/keys = {
 "values": [ Vector2( 5, -6 ), Vector2( 5, 2 ), Vector2( 5, 0 ), Vector2( 5, 0 ), Vector2( 5, 3 ), Vector2( 5, -6 ) ]
 }
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 10
 outline_size = 1
 outline_color = Color( 0.780392, 0.941176, 0.847059, 1 )
@@ -141,6 +141,7 @@ position = Vector2( 2.38541, 19.7922 )
 position = Vector2( 1.83123, -11.7317 )
 
 [node name="Number" type="TextureRect" parent="Control/RightPanel"]
+visible = false
 margin_left = 2.86147
 margin_top = 20.1054
 margin_right = 14.8615
@@ -256,7 +257,7 @@ margin_left = 26.3211
 margin_top = -1.17127
 margin_right = 61.3211
 margin_bottom = 13.8287
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 text = "good!"
 script = ExtResource( 11 )
@@ -275,13 +276,13 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Bite"]
-anims/Close = SubResource( 6 )
+anims/Close = SubResource( 5 )
 
 [node name="Lose" type="Panel" parent="Control"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 6 )
 script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -332,7 +333,7 @@ margin_right = 4.0
 margin_bottom = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ShowCounter = SubResource( 8 )
+anims/ShowCounter = SubResource( 7 )
 
 [node name="Victory" type="Label" parent="."]
 visible = false
@@ -342,7 +343,7 @@ margin_left = -40.0
 margin_top = -1.0
 margin_right = 40.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 text = "¡GANASTES!"
 align = 1
@@ -358,7 +359,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 14.0
 margin_bottom = 37.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 text = "Presiona una tecla para continuar"
 align = 1

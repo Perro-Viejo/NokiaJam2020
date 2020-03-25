@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MX_Bite.ogg-baa3c17f325c44720333540c65bb611d.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/MX_Bite.ogg"
+dest_files=[ "res://.import/MX_Bite.ogg-baa3c17f325c44720333540c65bb611d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

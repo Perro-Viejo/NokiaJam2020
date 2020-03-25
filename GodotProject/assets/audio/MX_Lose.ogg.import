@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MX_Lose.ogg-7417e3a703d9a99b44d683516b1a3afb.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/MX_Lose.ogg"
+dest_files=[ "res://.import/MX_Lose.ogg-7417e3a703d9a99b44d683516b1a3afb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
