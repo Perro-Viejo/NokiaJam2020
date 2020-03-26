@@ -10,6 +10,7 @@ onready var _right_panel: Panel = $Control/RightPanel
 onready var _smell_bar: TextureProgress = $Control/LeftPanel/CenterContainer/SmellBar
 onready var _bite: Panel = $Control/Bite
 onready var _lose: Panel = $Control/Lose
+onready var _victory: Label = $Victory
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 """
 Esta función se llamará antes que el _ready() pues es invocada por el nivel
@@ -46,15 +47,7 @@ func _ready() -> void:
 	_lose.hide()
 	
 	# Ver si se quiere probar algo cuando se corra la escena sola
-	if test != TestType.NONE:
-		$Control.show()
-		
-		match test:
-			TestType.LOSE:
-				_on_possum_discovered()
-				_on_level_finished(EventsManager.FINISH_TYPE.DEFEAT)
-			TestType.WIN:
-				self._on_level_finished(EventsManager.FINISH_TYPE.VICTORY)
+	check_testing()
 
 
 func _on_possum_alerted() -> void:
@@ -68,7 +61,8 @@ func _on_enemy_approached(smell_time: int) -> void:
 
 func _on_enemy_left() -> void:
 	$Control.hide()
-	
+
+
 func _on_item_picked(count) -> void:
 	$AnimationPlayer.play("ShowCounter")
 	$FruitCount.count_fruit(count)
@@ -97,10 +91,16 @@ func _on_level_finished(type: String) -> void:
 		yield(get_tree().create_timer(0.4), 'timeout')
 		EventsManager.emit_signal('play_requested', 'MX', 'Lose')
 	else:
-		$Victory.show()
-		EventsManager.emit_signal('play_requested', 'UI', 'Win')
-		yield(get_tree().create_timer(1), "timeout")
-		$Victory/Presionameste.show()
-		EventsManager.emit_signal('play_requested', 'UI', 'Sub')
-		yield(get_tree().create_timer(0.5), "timeout")
-		EventsManager.emit_signal('play_requested', 'MX', 'Win')
+		_victory.show()
+
+
+func check_testing() -> void:
+	if test != TestType.NONE:
+		$Control.show()
+		
+		match test:
+			TestType.LOSE:
+				_on_possum_discovered()
+				_on_level_finished(EventsManager.FINISH_TYPE.DEFEAT)
+			TestType.WIN:
+				self._on_level_finished(EventsManager.FINISH_TYPE.VICTORY)

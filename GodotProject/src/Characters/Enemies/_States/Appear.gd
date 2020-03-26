@@ -5,8 +5,8 @@ var tick: int = 0
 var step: int = 0
 var last_frame: int = 3
 var y_by_step: Dictionary = {
-	2: 2,
-	3: 2
+	2: 1,
+	3: 1
 }
 # Guardar el tipo del owner para que sea más fácil acceder a propiedades y
 # métodos de la clase.

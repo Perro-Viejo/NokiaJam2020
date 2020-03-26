@@ -1,14 +1,15 @@
 extends Node2D
-
+#▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Variables ▒▒▒▒
 const buttons = [
 	'PlayButtonLabel',
 	'CreditsButtonLabel',
 	'ExitButtonLabel'
 ];
-var index = 0;
-var selector;
-var button;
 
+var index:int = 0;
+var selector: Node;
+var button: MainMenuButton;
+#▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
 func _ready():
 	selector = load('res://src/TitleScreen/Selector.tscn').instance()
 	add_child(load('res://src/Main/Managers/AudioManager.tscn').instance())
@@ -27,20 +28,17 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		button.remove_child(selector)
 		
-		if event.scancode == KEY_DOWN:
-			EventsManager.emit_signal('play_requested' , 'UI', 'Cursor')
-			index += 1
-			if index >= buttons.size():
-				index = buttons.size()-1
-				
-			
-		if event.scancode == KEY_UP:
-			EventsManager.emit_signal('play_requested' , 'UI', 'Cursor')
-			index -= 1
-			
-			if index < 0:
-				index = 0
+		var dir: int = 1
 		
+		match event.scancode:
+			KEY_UP:
+				dir = -1
+				continue
+			_:
+				EventsManager.emit_signal('play_requested' , 'UI', 'Cursor')
+
+		index = wrapi(index + dir, 0, buttons.size())
+
 		if event.scancode == KEY_ENTER:
 			EventsManager.emit_signal('play_requested' , 'UI', 'Select')
 			get_node(buttons[self.index]).excecute_command()

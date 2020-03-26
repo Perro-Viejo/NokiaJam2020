@@ -40,11 +40,12 @@ func play_animation(code, previous_state = ''):
 			$Sprite/AnimationPlayer.play('PlayPossum', -1, 2.0)
 			EventsManager.emit_signal('play_requested' , get_name(), 'PlayPossum')
 		STATES.CONTINUE:
-			$Sprite/AnimationPlayer.play('PlayPossum', -1, -3.0, true)
-			yield($Sprite/AnimationPlayer, 'animation_finished')
-			EventsManager.emit_signal('play_requested' , get_name(), 'Wake')
-			yield(get_tree().create_timer(0.2), 'timeout')
-			EventsManager.emit_signal('possum_awake')
+			if previous_state == STATES.PLAY_POSSUM:
+				$Sprite/AnimationPlayer.play('PlayPossum', -1, -3.0, true)
+				yield($Sprite/AnimationPlayer, 'animation_finished')
+				EventsManager.emit_signal('play_requested' , get_name(), 'Wake')
+				yield(get_tree().create_timer(0.2), 'timeout')
+				EventsManager.emit_signal('possum_awake')
 			$StateMachine.transition_to(STATES.RUNNING)
 		STATES.IDLE:
 			$Sprite/AnimationPlayer.stop()

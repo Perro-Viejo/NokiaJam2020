@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/Fonts/HungryPro.otf" type="DynamicFontData" id=1]
 
 [resource]
-size = 8
+size = 18
 outline_size = 1
-extra_spacing_bottom = -6
 font_data = ExtResource( 1 )

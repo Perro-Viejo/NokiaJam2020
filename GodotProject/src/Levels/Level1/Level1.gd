@@ -51,7 +51,7 @@ func _animate_background() -> void:
 	if tick_count == advance_tick:
 		tick_count = 0
 	
-		# Emitir la señal que avisa que se 'movió' el fondo
+		# Emitir la señal que avisa que ...
 		EventsManager.emit_signal('world_advanced')
 	
 	# Emitir la señal que avisa que se 'movió' el fondo

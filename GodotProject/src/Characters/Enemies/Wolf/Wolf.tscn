@@ -18,9 +18,10 @@ tracks/0/keys = {
 }
 
 [node name="Wolf" instance=ExtResource( 1 )]
-y_speed = 5
-visibility_frame = 5
+y_speed = 8
+visibility_frame = 4
 smell_time = 16
+y_run_speed = 10
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, -19 )
@@ -28,3 +29,6 @@ hframes = 16
 
 [node name="AnimationPlayer" parent="Sprite" index="0"]
 anims/Eat = SubResource( 1 )
+
+[node name="Walk" parent="StateMachine" index="1"]
+change_z_on = 7

@@ -7,8 +7,10 @@ onready var _owner: Enemy = owner as Enemy
 func enter(msg: Dictionary = {}) -> void:
 	.enter(msg)
 	
-	_owner.get_node('Detector/CollisionShape2D').disabled = true
+	_owner.set_z_index(0)
 	_owner.animator.play('Smell')
+	
+	_owner.detector_collision.disabled = true
 	
 	# Conectar señales
 	EventsManager.connect(
@@ -17,6 +19,7 @@ func enter(msg: Dictionary = {}) -> void:
 		'transition_to',
 		[_owner.STATES.EAT]
 	)
+	EventsManager.connect('possum_done', self, '_on_possum_done')
 	
 	# Emitir señales
 	EventsManager.emit_signal('enemy_approached', _owner.smell_time)
@@ -30,3 +33,12 @@ func exit() -> void:
 		_state_machine,
 		'transition_to'
 	)
+	EventsManager.disconnect('possum_done', self, '_on_possum_done')
+
+
+func _on_possum_done() -> void:
+	_owner.set_z_index(4)
+	
+	# Que no tenga hambre para que se pueda ir del nivel ignorando a la Runcha
+	_owner.hungry = false
+	_state_machine.transition_to(_owner.STATES.WALK, { 'leave': true })

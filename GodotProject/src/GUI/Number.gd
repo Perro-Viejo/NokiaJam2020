@@ -7,35 +7,41 @@ enum NUMBER_TO_PRESS_STATES {
 	READY_TO_NEXT
 }
 
-var number_to_press: String
-var current_state: int = NUMBER_TO_PRESS_STATES.READY_TO_NEXT;
+var _number_to_press: String
+var _current_state: int = NUMBER_TO_PRESS_STATES.READY_TO_NEXT;
+var _minigame_done: bool = false
 
 onready var control_node: Control = $"../.."
 onready var right_pane_node: Panel = $".."
 onready var gui_node: GUI = $"../../.." as GUI
 #▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Funciones ▒▒▒▒
+func _ready() -> void:
+# warning-ignore:return_value_discarded
+	EventsManager.connect('possum_done', self, '_on_possum_done')
+
+
 func _input(event: InputEvent):
 	if (event is InputEventKey):
 		var pressed_character = (event as InputEventKey).as_text()
 
-		if current_state == NUMBER_TO_PRESS_STATES.SHOULD_PRESS:
-			if pressed_character == number_to_press:
-				current_state = NUMBER_TO_PRESS_STATES.PRESSED_CORRECT
+		if _current_state == NUMBER_TO_PRESS_STATES.SHOULD_PRESS:
+			if pressed_character == _number_to_press:
+				_current_state = NUMBER_TO_PRESS_STATES.PRESSED_CORRECT
 				control_node.get_node('InfoText').show_good_message()
 				EventsManager.emit_signal('play_requested', 'UI', 'Pos_Fbk')
 				for _particles in $Pos_Fbk.get_children():
 					_particles.set_emitting(true)
 			else:
-				current_state = NUMBER_TO_PRESS_STATES.PRESSED_WRONG
+				_current_state = NUMBER_TO_PRESS_STATES.PRESSED_WRONG
 				lose_minigame()
 				EventsManager.emit_signal('play_requested', 'UI', 'Neg_Fbk')
 
 
 func _on_Timer_timeout():
-	if current_state == NUMBER_TO_PRESS_STATES.SHOULD_PRESS:
+	if _current_state == NUMBER_TO_PRESS_STATES.SHOULD_PRESS:
 		lose_minigame()
 	else:
-		current_state = NUMBER_TO_PRESS_STATES.READY_TO_NEXT
+		_current_state = NUMBER_TO_PRESS_STATES.READY_TO_NEXT
 		$Tween.interpolate_property(
 			self,
 			'rect_position',
@@ -49,9 +55,12 @@ func _on_Timer_timeout():
 
 
 func launch_number():
-	current_state = NUMBER_TO_PRESS_STATES.READY_TO_NEXT
-	number_to_press = str(int(rand_range(0, 10)))
-	$NumberToPress.set_text(number_to_press)
+	if _minigame_done: return
+	
+	_current_state = NUMBER_TO_PRESS_STATES.READY_TO_NEXT
+	_number_to_press = str(int(rand_range(0, 10)))
+	
+	$NumberToPress.set_text(_number_to_press)
 	$Tween.interpolate_property(
 		self,
 		'rect_position',
@@ -65,14 +74,17 @@ func launch_number():
 
 
 func start():
+	_minigame_done = false
+
 	launch_number()
 	show()
 
 
 func _on_Tween_tween_completed(object, key):
 	var smell_bar: TextureProgress = gui_node._smell_bar
+	
 	if get_position() == right_pane_node.get_node('MiddlePosition').get_position():
-		current_state = NUMBER_TO_PRESS_STATES.SHOULD_PRESS
+		_current_state = NUMBER_TO_PRESS_STATES.SHOULD_PRESS
 		$Timer.start()
 	if get_position() == right_pane_node.get_node('FinalPosition').get_position():
 		if !smell_bar.time_count_started:
@@ -83,3 +95,7 @@ func _on_Tween_tween_completed(object, key):
 
 func lose_minigame() -> void:
 	EventsManager.emit_signal('possum_discovered')
+
+
+func _on_possum_done() -> void:
+	_minigame_done = true
