@@ -41,6 +41,6 @@ func _input(event):
 
 		if event.scancode == KEY_ENTER:
 			EventsManager.emit_signal('play_requested' , 'UI', 'Select')
-			get_node(buttons[self.index]).excecute_command()
+			get_node(buttons[index - 1]).excecute_command()
 		
 		update_selector()
